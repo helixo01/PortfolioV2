@@ -13,7 +13,7 @@ function PortfolioPage({ language }) {
       <Hero language={language} />
       <Header />
       <main>
-        <About />
+        <About language={language} />
         <Projects />
         <Skills />
         <Contact />
