@@ -1,0 +1,31 @@
+:root {
+  /* Thème sombre (défaut) */
+  --bg-primary-dark: #13131f;
+  --bg-secondary-dark: #13131f;
+  --accent-primary-dark: #ff4d5a;
+  --accent-secondary-dark: #b195ff;
+  --text-primary-dark: #ffffff;
+
+  /* Thème clair */
+  --bg-primary-light: #f8f9fc;
+  --bg-secondary-light: #ffffff;
+  --accent-primary-light: #ff4d5a;
+  --accent-secondary-light: #7c5dfa;
+  --text-primary-light: #1a1a2e;
+
+  /* Variables actives (initialement thème sombre) */
+  --bg-primary: var(--bg-primary-dark);
+  --bg-secondary: var(--bg-secondary-dark);
+  --accent-primary: var(--accent-primary-dark);
+  --accent-secondary: var(--accent-secondary-dark);
+  --text-primary: var(--text-primary-dark);
+}
+
+/* Classe pour le thème clair */
+:root[data-theme='light'] {
+  --bg-primary: var(--bg-primary-light);
+  --bg-secondary: var(--bg-secondary-light);
+  --accent-primary: var(--accent-primary-light);
+  --accent-secondary: var(--accent-secondary-light);
+  --text-primary: var(--text-primary-light);
+} 
