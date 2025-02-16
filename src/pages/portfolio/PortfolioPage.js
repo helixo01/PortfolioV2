@@ -7,10 +7,10 @@ import Skills from '../../features/skills/Skills';
 import Contact from '../../features/contact/Contact';
 import './PortfolioPage.css';
 
-function PortfolioPage() {
+function PortfolioPage({ language }) {
   return (
     <div className="portfolio">
-      <Hero />
+      <Hero language={language} />
       <Header />
       <main>
         <About />

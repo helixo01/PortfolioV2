@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { IoIosArrowDown } from 'react-icons/io';
+import { translations } from '../../translations/content';
 import './Hero.css';
 
-const Hero = () => {
+const Hero = ({ language }) => {
   const [showScroll, setShowScroll] = useState(true);
+  const content = translations[language];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,16 +26,16 @@ const Hero = () => {
   return (
     <section className="hero">
       <div className="hero-background">
-        <div className="top-text">PORTFOLIO</div>
+        <div className="top-text">{content.portfolio}</div>
       </div>
       <div className="hero-content">
-        <span className="hero-greeting">Bonjour, je suis</span>
+        <span className="hero-greeting">{content.greeting}</span>
         <h1 className="hero-title">John Doe</h1>
-        <p className="hero-subtitle">Ingénieur Informatique</p>
+        <p className="hero-subtitle">{content.role}</p>
       </div>
       {showScroll && (
         <div className="scroll-indicator" onClick={scrollToContent} role="button" tabIndex={0}>
-          <span>Découvrir</span>
+          <span>{content.discover}</span>
           <IoIosArrowDown className="scroll-arrow-icon" />
         </div>
       )}
