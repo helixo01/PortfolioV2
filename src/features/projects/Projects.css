@@ -101,16 +101,8 @@
 
 .carousel-track {
   display: flex;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   height: 100%;
-  transition: transform 0.3s ease-out;
-}
-
-.left {
-  animation: slideLeft 0.3s ease-out;
-}
-
-.right {
-  animation: slideRight 0.3s ease-out;
 }
 
 .carousel-slide {
@@ -451,6 +443,10 @@
   display: none;
 }
 
+.carousel-track {
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 @media (max-width: 1400px) {
   .preview-slide {
     display: none;
@@ -462,26 +458,4 @@
     font-size: 0.8rem;
     padding: 0.4rem 1.2rem;
   }
-}
-
-@keyframes slideLeft {
-  from {
-    transform: translateX(-${props => (currentIndex - 1) * 100}%);
-  }
-  to {
-    transform: translateX(-${props => currentIndex * 100}%);
-  }
-}
-
-@keyframes slideRight {
-  from {
-    transform: translateX(-${props => (currentIndex + 1) * 100}%);
-  }
-  to {
-    transform: translateX(-${props => currentIndex * 100}%);
-  }
-}
-
-.slide-left, .slide-right {
-  display: none;
 } 

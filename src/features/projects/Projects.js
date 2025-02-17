@@ -4,8 +4,6 @@ import './Projects.css';
 
 const Projects = ({ language }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [slideDirection, setSlideDirection] = useState('');
-  const [isAnimating, setIsAnimating] = useState(false);
 
   const projects = [
     {
@@ -78,30 +76,12 @@ const Projects = ({ language }) => {
   const totalSlides = Math.ceil(projects.length / projectsPerSlide);
 
   const nextSlide = useCallback(() => {
-    if (isAnimating) return;
-    setIsAnimating(true);
-    setSlideDirection('left');
     setCurrentIndex((prev) => (prev + 1) % totalSlides);
-    
-    // Réinitialiser l'animation après un court délai
-    setTimeout(() => {
-      setIsAnimating(false);
-      setSlideDirection('');
-    }, 300);
-  }, [isAnimating, totalSlides]);
+  }, [totalSlides]);
 
   const prevSlide = useCallback(() => {
-    if (isAnimating) return;
-    setIsAnimating(true);
-    setSlideDirection('right');
     setCurrentIndex((prev) => (prev - 1 + totalSlides) % totalSlides);
-    
-    // Réinitialiser l'animation après un court délai
-    setTimeout(() => {
-      setIsAnimating(false);
-      setSlideDirection('');
-    }, 300);
-  }, [isAnimating, totalSlides]);
+  }, [totalSlides]);
 
   return (
     <section id="projects" className="projects-section">
@@ -118,11 +98,8 @@ const Projects = ({ language }) => {
             )}
           </div>
           
-          <div 
-            className={`carousel-track ${slideDirection}`}
-            style={{ 
-              transform: `translateX(-${currentIndex * 100}%)`
-            }}
+          <div className="carousel-track"
+            style={{ transform: `translateX(-${currentIndex * 100}%)` }}
           >
             {Array(totalSlides).fill().map((_, slideIndex) => (
               <div key={slideIndex} className="carousel-slide">
