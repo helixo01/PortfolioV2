@@ -14,7 +14,7 @@ function PortfolioPage({ language }) {
       <Header />
       <main>
         <About language={language} />
-        <Projects />
+        <Projects language={language} />
         <Skills />
         <Contact />
       </main>
