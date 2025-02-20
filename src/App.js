@@ -3,6 +3,7 @@ import PortfolioPage from './pages/portfolio/PortfolioPage';
 import ThemeToggle from './components/ThemeToggle/ThemeToggle';
 import LanguageToggle from './components/LanguageToggle/LanguageToggle';
 import './styles/theme.css';
+import { LanguageProvider } from './context/LanguageContext';
 
 function App() {
   const [isDark, setIsDark] = useState(true);
@@ -21,13 +22,13 @@ function App() {
   };
 
   return (
-    <>
+    <LanguageProvider>
       <div className="toggles-container">
         <LanguageToggle language={language} toggleLanguage={toggleLanguage} />
         <ThemeToggle isDark={isDark} toggleTheme={toggleTheme} />
       </div>
       <PortfolioPage language={language} />
-    </>
+    </LanguageProvider>
   );
 }
 
