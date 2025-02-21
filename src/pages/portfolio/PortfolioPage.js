@@ -4,7 +4,7 @@ import Header from '../../features/header/Header';
 import About from '../../features/about/About';
 import Projects from '../../features/projects/Projects';
 import Skills from '../../features/skills/Skills';
-import Contact from '../../features/contact/Contact';
+import Footer from '../../components/Footer/Footer';
 import './PortfolioPage.css';
 
 function PortfolioPage({ language }) {
@@ -16,8 +16,8 @@ function PortfolioPage({ language }) {
         <About language={language} />
         <Projects language={language} />
         <Skills />
-        <Contact />
       </main>
+      <Footer />
     </div>
   );
 }
