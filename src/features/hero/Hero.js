@@ -1,11 +1,26 @@
 import React, { useEffect, useState } from 'react';
 import { IoIosArrowDown } from 'react-icons/io';
-import { translations } from '../../translations/content';
+import { useLanguage } from '../../context/LanguageContext';
 import './Hero.css';
 
-const Hero = ({ language }) => {
+const Hero = () => {
   const [showScroll, setShowScroll] = useState(true);
-  const content = translations[language];
+  const { language } = useLanguage();
+
+  const translations = {
+    fr: {
+      greeting: "Bonjour, je suis",
+      role: "Ingénieur Informatique",
+      discover: "Découvrir",
+      portfolio: "PORTFOLIO"
+    },
+    en: {
+      greeting: "Hello, I am",
+      role: "Software Engineer",
+      discover: "Discover",
+      portfolio: "PORTFOLIO"
+    }
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,6 +32,8 @@ const Hero = ({ language }) => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const content = translations[language];
 
   const scrollToContent = () => {
     const contentSection = document.getElementById('about');

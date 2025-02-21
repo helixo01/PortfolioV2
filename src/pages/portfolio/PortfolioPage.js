@@ -5,13 +5,16 @@ import About from '../../features/about/About';
 import Projects from '../../features/projects/Projects';
 import Skills from '../../features/skills/Skills';
 import Footer from '../../components/Footer/Footer';
+import { useLanguage } from '../../context/LanguageContext';
 import './PortfolioPage.css';
 
-function PortfolioPage({ language }) {
+function PortfolioPage({ isDark, toggleTheme }) {
+  const { language } = useLanguage();
+
   return (
     <div className="portfolio">
-      <Hero language={language} />
-      <Header />
+      <Hero />
+      <Header isDark={isDark} toggleTheme={toggleTheme} />
       <main>
         <About language={language} />
         <Projects language={language} />
