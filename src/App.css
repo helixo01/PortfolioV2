@@ -72,6 +72,11 @@ h2 {
   z-index: 1100;
   animation: fadeIn 1s ease-out forwards;
   animation-delay: 1s;
+  transition: top 0.3s ease;
+}
+
+.toggles-container.with-header {
+  top: 1.7rem;
 }
 
 @keyframes fadeIn {
@@ -89,5 +94,9 @@ h2 {
   .toggles-container {
     top: 1rem;
     right: 1rem;
+  }
+
+  .toggles-container.with-header {
+    top: 1.2rem;
   }
 }
