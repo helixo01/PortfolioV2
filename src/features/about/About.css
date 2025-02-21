@@ -1,7 +1,8 @@
 .about-section {
-  padding: 6rem 2rem;
+  padding: 12rem 2rem 6rem;
   background-color: var(--bg-primary);
   position: relative;
+  min-height: 100vh;
 }
 
 .about-section::before {
@@ -274,5 +275,9 @@
 @media (max-width: 768px) {
   .experience-grid {
     grid-template-columns: 1fr;
+  }
+
+  .about-section {
+    padding: 10rem 1.5rem 4rem;
   }
 } 

@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import PortfolioPage from './pages/portfolio/PortfolioPage';
+import ThemeToggle from './components/ThemeToggle/ThemeToggle';
+import LanguageToggle from './components/LanguageToggle/LanguageToggle';
+import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 import './styles/theme.css';
+import './App.css';
 import { LanguageProvider } from './context/LanguageContext';
 
 function App() {
@@ -16,7 +20,12 @@ function App() {
 
   return (
     <LanguageProvider>
-      <PortfolioPage isDark={isDark} toggleTheme={toggleTheme} />
+      <div className="toggles-container">
+        <LanguageToggle />
+        <ThemeToggle isDark={isDark} toggleTheme={toggleTheme} />
+      </div>
+      <PortfolioPage />
+      <ScrollToTop />
     </LanguageProvider>
   );
 }
