@@ -19,10 +19,26 @@ const ScrollToTop = () => {
   }, []);
 
   const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
+    const duration = 1000; // Durée en ms (augmentée pour ralentir)
+    const start = window.pageYOffset;
+    const startTime = performance.now();
+
+    const easeInOutCubic = t => t < 0.5 
+      ? 4 * t * t * t 
+      : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
+
+    const scrollAnimation = currentTime => {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+
+      window.scrollTo(0, start * (1 - easeInOutCubic(progress)));
+
+      if (progress < 1) {
+        requestAnimationFrame(scrollAnimation);
+      }
+    };
+
+    requestAnimationFrame(scrollAnimation);
   };
 
   return (

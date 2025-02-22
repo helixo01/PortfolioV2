@@ -28,9 +28,9 @@
 
 .skills-container h2 {
   color: var(--accent-primary);
-  font-size: 0.9rem;
+  font-size: 1.2rem;
   text-transform: uppercase;
-  letter-spacing: 8px;
+  letter-spacing: 10px;
   margin-bottom: 4rem;
   text-align: center;
   font-weight: 500;
@@ -57,7 +57,7 @@
 
 .skill-category h3 {
   color: var(--accent-secondary);
-  font-size: 1.4rem;
+  font-size: 2.2rem;
   margin-bottom: 2rem;
   font-weight: 500;
   letter-spacing: 1px;
@@ -103,7 +103,7 @@
 
 .skill-name {
   color: var(--text-primary);
-  font-size: 0.95rem;
+  font-size: 1.1rem;
   font-weight: 500;
 }
 

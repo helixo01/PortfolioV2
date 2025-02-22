@@ -37,7 +37,27 @@ const Hero = () => {
 
   const scrollToContent = () => {
     const contentSection = document.getElementById('about');
-    contentSection.scrollIntoView({ behavior: 'smooth' });
+    const start = window.pageYOffset;
+    const end = contentSection.offsetTop;
+    const duration = 1000; // Durée en ms
+    const startTime = performance.now();
+
+    const easeInOutCubic = t => t < 0.5 
+      ? 4 * t * t * t 
+      : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
+
+    const animate = currentTime => {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+
+      window.scrollTo(0, start + (end - start) * easeInOutCubic(progress));
+
+      if (progress < 1) {
+        requestAnimationFrame(animate);
+      }
+    };
+
+    requestAnimationFrame(animate);
   };
 
   return (

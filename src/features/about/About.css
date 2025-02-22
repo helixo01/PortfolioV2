@@ -28,9 +28,9 @@
 
 .about-container h2 {
   color: var(--text-primary);
-  font-size: 0.9rem;
+  font-size: 1.2rem;
   text-transform: uppercase;
-  letter-spacing: 8px;
+  letter-spacing: 10px;
   margin-bottom: 4rem;
   text-align: center;
   font-weight: 500;
@@ -54,8 +54,8 @@
 
 .text-content p {
   margin-bottom: 1.5rem;
-  line-height: 1.8;
-  font-size: 1.1rem;
+  line-height: 2;
+  font-size: 1.2rem;
   color: var(--text-primary);
   opacity: 0.95;
 }
@@ -82,7 +82,7 @@
 
 .stat-number {
   display: block;
-  font-size: 2.5rem;
+  font-size: 3rem;
   font-weight: 700;
   color: var(--accent-secondary);
   margin-bottom: 0.5rem;
@@ -91,8 +91,8 @@
 .stat-label {
   display: block;
   color: var(--text-primary);
-  font-size: 0.9rem;
-  letter-spacing: 2px;
+  font-size: 1rem;
+  letter-spacing: 3px;
   text-transform: uppercase;
   opacity: 0.7;
 }
@@ -151,7 +151,7 @@
 
 .experience-section h3 {
   color: var(--accent-primary);
-  font-size: 0.9rem;
+  font-size: 1.2rem;
   text-transform: uppercase;
   letter-spacing: 8px;
   margin-bottom: 3rem;
@@ -203,7 +203,7 @@
 
 .experience-title {
   color: var(--text-primary);
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   margin-bottom: 0.5rem;
   font-weight: 500;
 }
@@ -279,5 +279,17 @@
 
   .about-section {
     padding: 10rem 1.5rem 4rem;
+  }
+
+  .hero-title {
+    font-size: 4.5rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.6rem;
+  }
+  
+  .text-content p {
+    font-size: 1.1rem;
   }
 } 
