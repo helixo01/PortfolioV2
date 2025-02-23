@@ -1,8 +1,7 @@
 .projects-section {
-  padding: 2rem 2rem;
+  padding: 6rem 2rem;
   background-color: var(--bg-primary);
   position: relative;
-  min-height: 100vh;
 }
 
 .projects-section::before {
@@ -31,7 +30,7 @@
   font-size: 1.2rem;
   text-transform: uppercase;
   letter-spacing: 10px;
-  margin-bottom: 4rem;
+  margin-bottom: 3rem;
   text-align: center;
   font-weight: 500;
 }
@@ -40,7 +39,7 @@
   display: flex;
   justify-content: center;
   gap: 1rem;
-  margin-bottom: 4rem;
+  margin-bottom: 3rem;
 }
 
 .projects-filters .filter-btn {
@@ -62,7 +61,7 @@
 }
 
 .projects-navigation-container {
-  margin-top: 2rem;
+  margin-top: 3rem;
 }
 
 .projects-navigation {
@@ -104,7 +103,7 @@
   width: 100%;
   height: 600px;
   overflow: hidden;
-  margin: 0 auto;
+  margin: 3rem auto;
   max-width: 1400px;
 }
 
