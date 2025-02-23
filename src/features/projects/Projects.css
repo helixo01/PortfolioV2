@@ -1,5 +1,5 @@
 .projects-section {
-  padding: 6rem 2rem;
+  padding: 2rem 2rem;
   background-color: var(--bg-primary);
   position: relative;
   min-height: 100vh;
@@ -66,11 +66,18 @@
 }
 
 .projects-navigation {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 2rem;
   margin-top: 1rem;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 0.5rem;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  width: fit-content;
+  margin: 1rem auto 0;
 }
 
 .nav-button {
@@ -152,26 +159,30 @@
   transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Style par défaut (sans survol) */
 .project-content {
   position: absolute;
   inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(0);
+  background: transparent;
+  z-index: 2;
+}
+
+/* Effet au survol sur desktop */
+.project-preview:hover .project-content {
+  opacity: 1;
+  backdrop-filter: blur(8px);
   background: linear-gradient(
     to top,
     rgba(19, 19, 31, 0.85) 0%,
     rgba(19, 19, 31, 0.75) 50%,
     rgba(19, 19, 31, 0.4) 100%
   );
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.project-preview:hover .project-content {
-  opacity: 1;
 }
 
 .project-preview:hover .project-image {
@@ -276,12 +287,15 @@
 
 @media (max-width: 1024px) {
   .projects-section {
-    padding: 4rem 1rem;
+    padding: 1.5rem 1rem;
+  }
+
+  .projects-container h2 {
+    margin-bottom: 1rem;
   }
 
   .carousel-container {
-    margin: 2rem auto;
-    max-width: 600px;
+    margin: 0.25rem auto;
   }
 
   .preview-slide {
@@ -305,60 +319,235 @@
 
   .project-preview {
     width: 100%;
-    height: auto;
-    min-height: calc(100vh - 200px);
+    height: 500px;
     margin: 0 auto;
+    position: relative;
   }
 
   .project-image-container {
-    position: relative;
-    height: 300px;
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    overflow: hidden;
-    background-color: var(--bg-primary);
-    display: grid;
-    place-items: center;
+    height: 100%;
+    z-index: 1;
   }
 
   .project-image {
-    max-width: 100%;
-    max-height: 100%;
-    width: auto;
-    height: auto;
-    object-fit: contain;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
   }
 
+  /* Style mobile */
   .project-content {
+    opacity: 0; /* Masqué par défaut */
+    background: transparent;
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .project-preview:hover .project-content {
+    opacity: 1;
+    backdrop-filter: blur(8px);
+    background: linear-gradient(
+      to top,
+      rgba(19, 19, 31, 0.95) 0%,
+      rgba(19, 19, 31, 0.85) 50%,
+      rgba(19, 19, 31, 0.7) 100%
+    );
+  }
+
+  .project-info {
+    max-width: 90%;
     padding: 1.5rem;
   }
 
-  .projects-navigation {
-    position: fixed;
-    bottom: -100px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(0, 0, 0, 0.5);
-    padding: 0.5rem;
-    border-radius: 20px;
-    backdrop-filter: blur(10px);
-    transition: bottom 0.3s ease;
-    z-index: 1000;
+  .project-info h3 {
+    font-size: 2rem;
+    margin-bottom: 0.8rem;
   }
 
-  .projects-navigation.visible {
-    bottom: 1rem;
+  .project-description {
+    font-size: 1.1rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .project-long-description {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+
+  .project-tags {
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .project-tag {
+    padding: 0.3rem 0.8rem;
+    font-size: 0.8rem;
+  }
+
+  .project-links {
+    gap: 0.8rem;
+  }
+
+  .project-link {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.8rem;
+  }
+
+  .projects-navigation {
+    margin-top: 0.75rem;
   }
 
   .nav-button {
-    width: 40px;
-    height: 40px;
-    font-size: 1.2rem;
+    width: 35px;
+    height: 35px;
+    font-size: 1.1rem;
   }
 
   .progress-indicator {
     top: 1rem;
     right: 1rem;
     position: fixed;
+  }
+
+  .stagger-animation > * {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .projects-section {
+    padding: 1rem 0.75rem;
+  }
+
+  .projects-container h2 {
+    margin-bottom: 0.75rem;
+  }
+
+  .project-preview {
+    height: 420px;
+  }
+
+  .auto-play-btn {
+    font-size: 0.8rem;
+    padding: 0.4rem 1.2rem;
+  }
+
+  .project-info {
+    max-width: 95%;
+    padding: 1rem;
+  }
+
+  .project-info h3 {
+    font-size: 1.8rem;
+  }
+
+  .project-status {
+    margin-bottom: 1rem;
+  }
+
+  .status-badge {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.7rem;
+  }
+
+  .projects-navigation {
+    margin-top: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .projects-section {
+    padding: 0.75rem 0.5rem;
+    min-height: auto;
+  }
+
+  .projects-container h2 {
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    letter-spacing: 6px;
+  }
+
+  .project-preview {
+    height: 340px;
+  }
+
+  .project-info {
+    max-width: 95%;
+    padding: 0.8rem;
+  }
+
+  .project-info h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .project-description {
+    font-size: 0.9rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .project-long-description {
+    font-size: 0.8rem;
+    margin-bottom: 0.8rem;
+    line-height: 1.4;
+  }
+
+  .project-status {
+    margin-bottom: 0.8rem;
+  }
+
+  .status-badge {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.65rem;
+  }
+
+  .project-tags {
+    gap: 0.4rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .project-tag {
+    padding: 0.2rem 0.6rem;
+    font-size: 0.7rem;
+  }
+
+  .project-links {
+    flex-direction: row;
+    gap: 0.5rem;
+  }
+
+  .project-link {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.75rem;
+  }
+
+  .carousel-container {
+    margin: 0.15rem auto;
+    height: 350px;
+  }
+
+  .projects-navigation {
+    margin-top: 0.25rem;
+    padding: 0.4rem;
+    gap: 1.5rem;
+  }
+
+  .nav-button {
+    width: 30px;
+    height: 30px;
+    font-size: 1rem;
   }
 }
 
@@ -536,13 +725,6 @@
 
 .carousel-track {
   transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-@media (max-width: 768px) {
-  .auto-play-btn {
-    font-size: 0.8rem;
-    padding: 0.4rem 1.2rem;
-  }
 }
 
 .progress-indicator {
