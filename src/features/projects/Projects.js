@@ -1,42 +1,43 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { IoArrowForward, IoArrowBack, IoLogoGithub, IoGlobeOutline } from 'react-icons/io5';
 import './Projects.css';
 
 const Projects = ({ language }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const projectsPerSlide = 2;
+  const [isNavigationVisible, setIsNavigationVisible] = useState(false);
+  const projectsPerSlide = window.innerWidth <= 1024 ? 1 : 2;
 
   const projects = [
     {
-      title: language === 'fr' ? "Projet 01" : "Project 01",
+      title: language === 'fr' ? "Portfolio" : "Portfolio",
       description: language === 'fr' 
         ? "Design & Développement Web" 
         : "Web Design & Development",
       longDescription: language === 'fr'
-        ? "Une application web moderne utilisant les dernières technologies pour offrir une expérience utilisateur optimale."
-        : "A modern web application using the latest technologies to provide an optimal user experience.",
-      image: "./images/test.png",
-      tags: ["React", "Node.js", "MongoDB", "AWS"],
+        ? "Portfolio personnel développé avec React, mettant en avant mes compétences et projets."
+        : "Personal portfolio developed with React, showcasing my skills and projects.",
+      image: "./images/Portfolio.png",
+      tags: ["React", "JavaScript", "CSS", "Responsive Design"],
       status: "completed",
       links: {
-        github: "https://github.com/username/project1",
-        live: "https://project1.com"
+        github: "https://github.com/username/portfolio",
+        live: "https://portfolio.com"
       }
     },
     {
-      title: language === 'fr' ? "Projet 02" : "Project 02",
+      title: language === 'fr' ? "LoL Data" : "LoL Data",
       description: language === 'fr' 
-        ? "Application Mobile" 
-        : "Mobile Application",
+        ? "Application Web de Statistiques" 
+        : "Web Statistics Application",
       longDescription: language === 'fr'
-        ? "Application mobile cross-platform développée avec React Native."
-        : "Cross-platform mobile application developed with React Native.",
-      image: "./images/test.png",
-      tags: ["React Native", "Firebase", "Stripe", "Redux"],
+        ? "Application d'analyse de données pour League of Legends utilisant l'API Riot Games."
+        : "Data analysis application for League of Legends using the Riot Games API.",
+      image: "./images/LoLData.png",
+      tags: ["React", "API REST", "Data Visualization", "Node.js"],
       status: "in-progress",
       links: {
-        github: "https://github.com/username/project2",
-        live: "https://project2.com"
+        github: "https://github.com/username/loldata",
+        live: "https://loldata.com"
       }
     },
     {
@@ -155,6 +156,23 @@ const Projects = ({ language }) => {
     }
   }, [currentSlide, totalSlides]);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const projectsSection = document.querySelector('.projects-section');
+      if (!projectsSection) return;
+
+      const rect = projectsSection.getBoundingClientRect();
+      const isVisible = rect.top < window.innerHeight * 0.5 && rect.bottom > window.innerHeight * 0.5;
+      
+      setIsNavigationVisible(isVisible);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Vérification initiale
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <section id="projects" className="projects-section">
       <div className="projects-container">
@@ -164,7 +182,7 @@ const Projects = ({ language }) => {
           <div className="preview-slide prev">
             {currentSlide > 0 && (
               <img 
-                src={projects[currentSlide - 1].image} 
+                src={projects[currentSlide * projectsPerSlide - 1].image} 
                 alt="Previous project"
               />
             )}
@@ -179,69 +197,77 @@ const Projects = ({ language }) => {
                 <div className="projects-grid">
                   {projects
                     .slice(slideIndex * projectsPerSlide, (slideIndex + 1) * projectsPerSlide)
-                    .map((project, index) => (
-                      <div key={index} className="project-preview">
-                        <div className="project-image-container">
-                          <img 
-                            src={project.image} 
-                            alt={project.title} 
-                            className="project-image"
-                          />
-                        </div>
-                        <div className="project-content">
-                          <div className="project-info stagger-animation">
-                            <h3>{project.title}</h3>
-                            <div className="project-status">
-                              <span className={`status-badge ${project.status}`}>
-                                {project.status === 'completed' 
-                                  ? (language === 'fr' ? 'Terminé' : 'Completed')
-                                  : (language === 'fr' ? 'En cours' : 'In Progress')}
-                              </span>
+                    .map((project, index) => {
+                      // Calculer le vrai numéro du projet
+                      const projectNumber = slideIndex * projectsPerSlide + index + 1;
+                      
+                      return (
+                        <div key={index} className="project-preview">
+                          <div className="project-image-container">
+                            <div className="progress-indicator">
+                              {`${projectNumber}/${projects.length}`}
                             </div>
-                            <p className="project-description">{project.description}</p>
-                            <p className="project-long-description">{project.longDescription}</p>
-                            <div className="project-tags">
-                              {project.tags.map((tag, i) => (
-                                <span key={i} className="project-tag">{tag}</span>
-                              ))}
-                            </div>
-                            <div className="project-links">
-                              {project.links.github && (
-                                <a 
-                                  href={project.links.github} 
-                                  target="_blank" 
-                                  rel="noopener noreferrer"
-                                  className="project-link"
-                                >
-                                  <IoLogoGithub />
-                                  GitHub
-                                </a>
-                              )}
-                              {project.links.live && (
-                                <a 
-                                  href={project.links.live} 
-                                  target="_blank" 
-                                  rel="noopener noreferrer"
-                                  className="project-link"
-                                >
-                                  <IoGlobeOutline />
-                                  Demo
-                                </a>
-                              )}
+                            <img 
+                              src={project.image} 
+                              alt={project.title} 
+                              className="project-image"
+                            />
+                          </div>
+                          <div className="project-content">
+                            <div className="project-info stagger-animation">
+                              <h3>{project.title}</h3>
+                              <div className="project-status">
+                                <span className={`status-badge ${project.status}`}>
+                                  {project.status === 'completed' 
+                                    ? (language === 'fr' ? 'Terminé' : 'Completed')
+                                    : (language === 'fr' ? 'En cours' : 'In Progress')}
+                                </span>
+                              </div>
+                              <p className="project-description">{project.description}</p>
+                              <p className="project-long-description">{project.longDescription}</p>
+                              <div className="project-tags">
+                                {project.tags.map((tag, i) => (
+                                  <span key={i} className="project-tag">{tag}</span>
+                                ))}
+                              </div>
+                              <div className="project-links">
+                                {project.links.github && (
+                                  <a 
+                                    href={project.links.github} 
+                                    target="_blank" 
+                                    rel="noopener noreferrer"
+                                    className="project-link"
+                                  >
+                                    <IoLogoGithub />
+                                    GitHub
+                                  </a>
+                                )}
+                                {project.links.live && (
+                                  <a 
+                                    href={project.links.live} 
+                                    target="_blank" 
+                                    rel="noopener noreferrer"
+                                    className="project-link"
+                                  >
+                                    <IoGlobeOutline />
+                                    Demo
+                                  </a>
+                                )}
+                              </div>
                             </div>
                           </div>
                         </div>
-                      </div>
-                    ))}
+                      );
+                    })}
                 </div>
               </div>
             ))}
           </div>
           
           <div className="preview-slide next">
-            {currentSlide < projects.length - 1 && (
+            {currentSlide < totalSlides - 1 && (
               <img 
-                src={projects[currentSlide + 1].image} 
+                src={projects[(currentSlide + 1) * projectsPerSlide].image} 
                 alt="Next project"
               />
             )}
@@ -249,7 +275,7 @@ const Projects = ({ language }) => {
         </div>
 
         <div className="projects-navigation-container">
-          <div className="projects-navigation">
+          <div className={`projects-navigation ${isNavigationVisible ? 'visible' : ''}`}>
             <button 
               className="nav-button prev" 
               onClick={() => handleCarouselSlide('prev')}

@@ -60,6 +60,12 @@
   align-items: center;
 }
 
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
 .logo {
   display: flex;
   align-items: center;
@@ -165,6 +171,16 @@
   letter-spacing: 1px;
 }
 
+/* Pour les écrans larges, on affiche les toggles dans le header */
+.header-right .toggles-container {
+  display: flex;
+}
+
+/* On cache le menu burger sur les écrans larges */
+.hamburger-button {
+  display: none;
+}
+
 @media (max-width: 768px) {
   .header {
     padding: 1rem;
@@ -172,6 +188,10 @@
 
   .header.scrolled {
     padding: 0.8rem 1rem;
+  }
+
+  .nav-links.desktop-nav {
+    display: none;
   }
 
   .nav-links {
@@ -198,5 +218,29 @@
 
   .language-toggle span {
     font-size: 0.7rem;
+  }
+
+  .toggles-container {
+    position: static; /* Retire la position fixed */
+    margin: 0;
+    animation: none;
+  }
+
+  .toggles-container.with-header {
+    top: auto;
+  }
+
+  /* Sur mobile, on cache les toggles du header */
+  .header-right .toggles-container {
+    display: none;
+  }
+
+  /* Et on affiche le menu burger avec ses toggles */
+  .hamburger-button {
+    display: block;
+  }
+
+  .mobile-menu .toggles-container {
+    display: flex;
   }
 } 

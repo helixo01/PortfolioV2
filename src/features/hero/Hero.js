@@ -67,7 +67,7 @@ const Hero = () => {
       </div>
       <div className="hero-content">
         <span className="hero-greeting">{content.greeting}</span>
-        <h1 className="hero-title">John Doe</h1>
+        <h1 className="hero-title">RICART Sébastien</h1>
         <p className="hero-subtitle">{content.role}</p>
       </div>
       {showScroll && (

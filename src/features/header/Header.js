@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useLanguage } from '../../context/LanguageContext';
+import HamburgerMenu from '../../components/HamburgerMenu/HamburgerMenu';
 import './Header.css';
+import LanguageToggle from '../../components/LanguageToggle/LanguageToggle';
+import ThemeToggle from '../../components/ThemeToggle/ThemeToggle';
 
-const Header = () => {
+const Header = ({ isDark, toggleTheme }) => {
   const [isFixed, setIsFixed] = useState(false);
   const [activeSection, setActiveSection] = useState('');
   const { language } = useLanguage();
@@ -61,7 +64,7 @@ const Header = () => {
         <div className="logo">
           <h1>JD</h1>
         </div>
-        <ul className="nav-links">
+        <ul className="nav-links desktop-nav">
           <li>
             <a 
               href="#about" 
@@ -87,6 +90,13 @@ const Header = () => {
             </a>
           </li>
         </ul>
+        <div className="header-right">
+          <div className="toggles-container">
+            <LanguageToggle />
+            <ThemeToggle isDark={isDark} toggleTheme={toggleTheme} />
+          </div>
+          <HamburgerMenu isDark={isDark} toggleTheme={toggleTheme} />
+        </div>
       </nav>
     </header>
   );

@@ -92,8 +92,7 @@ h2 {
 
 @media (max-width: 768px) {
   .toggles-container {
-    top: 1rem;
-    right: 1rem;
+    display: flex;
   }
 
   .toggles-container.with-header {
