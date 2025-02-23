@@ -42,19 +42,19 @@ const Projects = ({ language }) => {
       }
     },
     {
-      title: language === 'fr' ? "Projet 03" : "Project 03",
+      title: language === 'fr' ? "Discord Bot" : "Discord Bot",
       description: language === 'fr' 
-        ? "Application Desktop" 
-        : "Desktop Application",
+        ? "Bot Discord Multifonction" 
+        : "Multifunctional Discord Bot",
       longDescription: language === 'fr'
-        ? "Application desktop développée avec Electron."
-        : "Desktop application developed with Electron.",
-      image: "./images/test.png",
-      tags: ["Electron", "React", "SQLite", "TypeScript"],
+        ? "Bot Discord développé avec Discord.js intégrant diverses fonctionnalités de modération et de divertissement."
+        : "Discord bot developed with Discord.js integrating various moderation and entertainment features.",
+      image: "/images/DiscordBot.png",
+      tags: ["Node.js", "Discord.js", "MongoDB", "JavaScript"],
       status: "completed",
       links: {
-        github: "https://github.com/username/project3",
-        live: "https://project3.com"
+        github: "https://github.com/username/discord-bot",
+        live: "https://discord-bot.com"
       }
     },
     {
