@@ -6,6 +6,7 @@ const Projects = ({ language }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isNavigationVisible, setIsNavigationVisible] = useState(false);
   const projectsPerSlide = window.innerWidth <= 1024 ? 1 : 2;
+  const [imagesLoaded, setImagesLoaded] = useState({});
 
   const projects = [
     {
@@ -16,7 +17,7 @@ const Projects = ({ language }) => {
       longDescription: language === 'fr'
         ? "Portfolio personnel développé avec React, mettant en avant mes compétences et projets."
         : "Personal portfolio developed with React, showcasing my skills and projects.",
-      image: "./images/Portfolio.png",
+      image: "/images/Portfolio.png",
       tags: ["React", "JavaScript", "CSS", "Responsive Design"],
       status: "completed",
       links: {
@@ -32,7 +33,7 @@ const Projects = ({ language }) => {
       longDescription: language === 'fr'
         ? "Application d'analyse de données pour League of Legends utilisant l'API Riot Games."
         : "Data analysis application for League of Legends using the Riot Games API.",
-      image: "./images/LoLData.png",
+      image: "/images/LoLData.png",
       tags: ["React", "API REST", "Data Visualization", "Node.js"],
       status: "in-progress",
       links: {
@@ -173,6 +174,34 @@ const Projects = ({ language }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Fonction pour générer une description alt détaillée
+  const getAltDescription = (project) => {
+    const status = project.status === 'completed' ? 
+      (language === 'fr' ? 'Projet terminé' : 'Completed project') : 
+      (language === 'fr' ? 'Projet en cours' : 'Project in progress');
+    
+    return `${project.title} - ${project.description}. ${status}. ${
+      language === 'fr' ? 
+      `Technologies utilisées: ${project.tags.join(', ')}` : 
+      `Technologies used: ${project.tags.join(', ')}`
+    }`;
+  };
+
+  // Gestion de la navigation au clavier
+  const handleKeyPress = useCallback((event, action) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      action();
+    }
+  }, []);
+
+  const handleImageLoad = (projectId) => {
+    setImagesLoaded(prev => ({
+      ...prev,
+      [projectId]: true
+    }));
+  };
+
   return (
     <section id="projects" className="projects-section">
       <div className="projects-container">
@@ -202,15 +231,32 @@ const Projects = ({ language }) => {
                       const projectNumber = slideIndex * projectsPerSlide + index + 1;
                       
                       return (
-                        <div key={index} className="project-preview">
+                        <div 
+                          key={index} 
+                          className="project-preview"
+                          tabIndex={0}
+                          role="button"
+                          aria-label={language === 'fr' ? 
+                            `Voir les détails de ${project.title}` : 
+                            `View details of ${project.title}`
+                          }
+                          onKeyPress={(e) => handleKeyPress(e, () => {/* action au clic */})}
+                        >
                           <div className="project-image-container">
                             <div className="progress-indicator">
                               {`${projectNumber}/${projects.length}`}
                             </div>
                             <img 
                               src={project.image} 
-                              alt={project.title} 
-                              className="project-image"
+                              alt={getAltDescription(project)}
+                              className={`project-image ${imagesLoaded[index] ? 'loaded' : ''}`}
+                              loading="lazy"
+                              onLoad={() => handleImageLoad(index)}
+                              onError={(e) => {
+                                e.target.src = './images/fallback.png';
+                                e.target.alt = language === 'fr' ? 'Image non disponible' : 'Image not available';
+                                handleImageLoad(index);
+                              }}
                             />
                           </div>
                           <div className="project-content">
@@ -279,24 +325,34 @@ const Projects = ({ language }) => {
             <button 
               className="nav-button prev" 
               onClick={() => handleCarouselSlide('prev')}
-              aria-label="Previous projects"
+              aria-label={language === 'fr' ? "Projets précédents" : "Previous projects"}
+              onKeyPress={(e) => handleKeyPress(e, () => handleCarouselSlide('prev'))}
             >
               <IoArrowBack />
             </button>
-            <div className="carousel-indicators">
+            
+            <div className="carousel-indicators" role="tablist">
               {Array(totalSlides).fill().map((_, index) => (
                 <button
                   key={index}
                   className={`carousel-indicator ${index === currentSlide ? 'active' : ''}`}
                   onClick={() => setCurrentSlide(index)}
-                  aria-label={`Go to slide ${index + 1}`}
+                  aria-label={language === 'fr' ? 
+                    `Aller à la page ${index + 1} sur ${totalSlides}` : 
+                    `Go to page ${index + 1} of ${totalSlides}`
+                  }
+                  aria-selected={index === currentSlide}
+                  role="tab"
+                  onKeyPress={(e) => handleKeyPress(e, () => setCurrentSlide(index))}
                 />
               ))}
             </div>
+
             <button 
               className="nav-button next" 
               onClick={() => handleCarouselSlide('next')}
-              aria-label="Next projects"
+              aria-label={language === 'fr' ? "Projets suivants" : "Next projects"}
+              onKeyPress={(e) => handleKeyPress(e, () => handleCarouselSlide('next'))}
             >
               <IoArrowForward />
             </button>
