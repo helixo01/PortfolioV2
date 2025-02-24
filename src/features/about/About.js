@@ -6,31 +6,49 @@ const About = ({ language }) => {
 
   const experiences = [
     {
-      year: "2023",
-      title: language === 'fr' ? "Développeur Senior" : "Senior Developer",
-      company: "Tech Company",
-      type: "fullstack",
-      description: language === 'fr' 
-        ? "Lead développeur sur des projets d'envergure"
-        : "Lead developer on major projects"
+      year: "Depuis Octobre 2023",
+      title: language === 'fr' ? "Alternance - Développement d'application" : "Apprenticeship - Application Development",
+      company: "OP Mobility (ex-Plastic Omnium), Ruitz (France)",
+      type: "professional",
+      description: language === 'fr'
+        ? "Reprise en main du projet pour un déployement sur toute la partie assemblage tout en allant plus en détails."
+        : "Project takeover for deployment across the entire assembly section while going into more detail."
     },
     {
-      year: "2021",
-      title: language === 'fr' ? "Développeur Full Stack" : "Full Stack Developer",
-      company: "Web Agency",
-      type: "fullstack",
+      year: "Depuis Octobre 2023",
+      title: language === 'fr' ? "Cycle ingénieur" : "Engineering Cycle",
+      company: language === 'fr' ? "CESI École d'ingénieur, Arras (France)" : "CESI Graduate School of Engineering, Arras (France)",
+      type: "education",
       description: language === 'fr'
-        ? "Développement d'applications web complexes"
-        : "Development of complex web applications"
+        ? "Réussite de la première année du cycle ingénieur en alternance"
+        : "Successful completion of the first year of engineering cycle in work-study program"
     },
     {
-      year: "2019",
-      title: language === 'fr' ? "Développeur Frontend" : "Frontend Developer",
-      company: "Startup",
-      type: "frontend",
+      year: "Avril - Juillet 2023",
+      title: language === 'fr' ? "Stage - Développement d'une application" : "Internship - Web Application Development",
+      company: "OP Mobility (ex-Plastic Omnium), Ruitz (France)",
+      type: "professional",
       description: language === 'fr'
-        ? "Création d'interfaces utilisateur modernes"
-        : "Creation of modern user interfaces"
+        ? "Démonstration de faisabilité de la digitalisation d'une ligne d'assemblage industriel. Conception et réalisation de cette solution permettant de faire valider le projet."
+        : "Feasibility demonstration of an industrial assembly line digitalization. Design and implementation of this solution leading to project validation."
+    },
+    {
+      year: "2021-2023",
+      title: language === 'fr' ? "Cycle préparatoire intégré" : "Integrated Preparatory Cycle",
+      company: language === 'fr' ? "CESI École d'ingénieur, Arras (France)" : "CESI Graduate School of Engineering, Arras (France)",
+      type: "education",
+      description: language === 'fr'
+        ? "Passage des 2 premières années du cycle préparatoire"
+        : "Completion of the first two years of preparatory cycle"
+    },
+    {
+      year: "2018-2021",
+      title: language === 'fr' ? "Baccalauréat Général" : "French Secondary High School Diploma",
+      company: "Lycée Gambetta-Carnot, Arras (France)",
+      type: "education",
+      description: language === 'fr'
+        ? "Mention Bien - Spécialités Mathématiques et Sciences de l'ingénieur"
+        : "Honors Degree - Specialization in Mathematics and Engineering Sciences"
     }
   ];
 
@@ -55,18 +73,13 @@ const About = ({ language }) => {
         <div className="about-content">
           <div className="about-text-and-photo">
             <div className="photo-container">
-              <img src="./images/test.png" alt="Profile" />
+              <img src="./images/Photo.png" alt="Profile" />
             </div>
             <div className="text-content">
               {highlightText(
                 language === 'fr' 
-                  ? "Je suis un développeur passionné par le développement web et les architectures modernes. Spécialisé dans le développement web et les architectures modernes."
-                  : "I am a developer passionate about web development and modern architectures. Specialized in web development and modern architectures."
-              )}
-              {highlightText(
-                language === 'fr'
-                  ? "Mon objectif est de créer des solutions innovantes et efficaces pour répondre aux défis techniques d'aujourd'hui."
-                  : "My goal is to create innovative solutions and efficient solutions to address today's technical challenges."
+                  ? "Actuellement en 2e année du cycle ingénieur sous statut alternant, je suis quelqu'un de curieux et de polyvalant pouvant travailler dans de nombreux domaines. Avec des expériences dans le développement Web et logiciel, le réseau et la Data mais la nouveauté ne me fait pas peur et je me ferais une joie de découvrir de nouveau sujets."
+                  : "Currently in my 2nd year of engineering studies as a work-study student, I am a curious and versatile person who can work in many fields. With experience in Web and software development, networking and Data, but I'm not afraid of novelty and I would be happy to discover new subjects."
               )}
             </div>
           </div>
@@ -81,16 +94,16 @@ const About = ({ language }) => {
                 {language === 'fr' ? 'Tous' : 'All'}
               </button>
               <button 
-                className={`filter-btn ${filter === 'frontend' ? 'active' : ''}`}
-                onClick={() => setFilter('frontend')}
+                className={`filter-btn ${filter === 'education' ? 'active' : ''}`}
+                onClick={() => setFilter('education')}
               >
-                Frontend
+                {language === 'fr' ? 'Formation' : 'Education'}
               </button>
               <button 
-                className={`filter-btn ${filter === 'fullstack' ? 'active' : ''}`}
-                onClick={() => setFilter('fullstack')}
+                className={`filter-btn ${filter === 'professional' ? 'active' : ''}`}
+                onClick={() => setFilter('professional')}
               >
-                Full Stack
+                {language === 'fr' ? 'Expérience Professionnelle' : 'Work Experience'}
               </button>
             </div>
             <div className="experience-grid">

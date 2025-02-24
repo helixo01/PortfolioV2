@@ -84,7 +84,7 @@ const Footer = () => {
             <a href="/accessibility" className="legal-link">{content.accessibility}</a>
           </div>
           <p className="copyright">
-            © {currentYear} John Doe. {content.rights}.
+            © {currentYear} Sébastien RICART. {content.rights}.
           </p>
         </div>
       </div>

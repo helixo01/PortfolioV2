@@ -62,7 +62,7 @@ const Header = ({ isDark, toggleTheme }) => {
     <header className={`header ${isFixed ? 'fixed' : ''}`}>
       <nav className="nav-container">
         <div className="logo">
-          <h1>JD</h1>
+          <h1>SR</h1>
         </div>
         <ul className="nav-links desktop-nav">
           <li>

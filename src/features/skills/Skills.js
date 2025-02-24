@@ -47,20 +47,36 @@ const Skills = () => {
       title: 'Compétences',
       categories: {
         programming: {
-          name: "Langages de programmation",
-          description: "Les langages de programmation que je maîtrise pour développer des applications performantes"
+          name: "Langages de Programmation",
+          description: "Les langages de programmation que je maîtrise"
         },
-        frontend: {
-          name: "Frontend",
-          description: "Technologies front-end pour créer des interfaces utilisateur modernes et réactives"
+        frameworks: {
+          name: "Frameworks & Technologies",
+          description: "Frameworks et technologies que j'utilise"
         },
-        backend: {
-          name: "Backend",
-          description: "Technologies back-end pour développer des API robustes et évolutives"
+        data: {
+          name: "Outils Data & Analytics",
+          description: "Outils d'analyse et de visualisation de données"
+        },
+        ide: {
+          name: "Environnements & IDE",
+          description: "Environnements de développement intégrés"
+        },
+        databases: {
+          name: "Bases de Données",
+          description: "Systèmes de gestion de bases de données"
         },
         tools: {
-          name: "Outils & Autres",
-          description: "Outils et technologies complémentaires pour un développement efficace"
+          name: "Outils de Développement",
+          description: "Outils pour le développement et le déploiement"
+        },
+        methods: {
+          name: "Méthodologies",
+          description: "Méthodes et pratiques de travail"
+        },
+        softskills: {
+          name: "Soft Skills",
+          description: "Compétences interpersonnelles"
         }
       }
     },
@@ -69,19 +85,35 @@ const Skills = () => {
       categories: {
         programming: {
           name: "Programming Languages",
-          description: "Programming languages I master to develop high-performance applications"
+          description: "Programming languages I master"
         },
-        frontend: {
-          name: "Frontend",
-          description: "Front-end technologies to create modern and responsive user interfaces"
+        frameworks: {
+          name: "Frameworks & Technologies",
+          description: "Frameworks and technologies I use"
         },
-        backend: {
-          name: "Backend",
-          description: "Back-end technologies to develop robust and scalable APIs"
+        data: {
+          name: "Data Analysis & Visualization",
+          description: "Data analysis and visualization tools"
+        },
+        ide: {
+          name: "Development Environments & IDE",
+          description: "Development environments"
+        },
+        databases: {
+          name: "Databases",
+          description: "Databases and storage"
         },
         tools: {
-          name: "Tools & Others",
-          description: "Complementary tools and technologies for efficient development"
+          name: "Development Tools",
+          description: "Development tools"
+        },
+        methods: {
+          name: "Work Methodologies",
+          description: "Work methodologies"
+        },
+        softskills: {
+          name: "Soft Skills",
+          description: "Interpersonal skills"
         }
       }
     }
@@ -94,59 +126,66 @@ const Skills = () => {
   const skills = [
     {
       category: translations[currentLanguage].categories.programming.name,
-      descriptionFr: translations.fr.categories.programming.description,
-      descriptionEn: translations.en.categories.programming.description,
+      descriptionFr: "Les langages de programmation que je maîtrise",
+      descriptionEn: "Programming languages I master",
       items: [
-        { name: "C", icon: <SiC />, level: 1 },
-        { name: "C++", icon: <SiCplusplus />, level: 1 },
-        { name: "C#", icon: <SiDotnet />, level: 1 },
-        { name: "JavaScript (ES6+)", icon: <IoLogoJavascript />, level: 3 },
-        { name: "Python", icon: <IoLogoPython />, level: 3 },
-        { name: "HTML5", icon: <IoLogoHtml5 />, level: 5 },
-        { name: "CSS3", icon: <IoLogoCss3 />, level: 3 },
-        { name: "TypeScript", icon: <SiTypescript />, level: 4 },
-        { name: "Java", icon: <DiJava />, level: 3 },
-        { name: "PHP", icon: <SiPhp />, level: 3 },
-        { name: "SQL", icon: <SiMysql />, level: 4 }
+        { name: "JavaScript", level: 4 }
       ]
     },
     {
-      category: translations[currentLanguage].categories.frontend.name,
-      descriptionFr: translations.fr.categories.frontend.description,
-      descriptionEn: translations.en.categories.frontend.description,
+      category: translations[currentLanguage].categories.frameworks.name,
+      descriptionFr: "Frameworks et technologies que j'utilise",
+      descriptionEn: "Frameworks and technologies I use",
       items: [
-        { name: "React.js", icon: <SiReact />, level: 5 },
-        { name: "Vue.js", icon: <SiVuedotjs />, level: 4 },
-        { name: "Next.js", icon: <SiNextdotjs />, level: 4 },
-        { name: "HTML5/CSS3", icon: <IoLogoHtml5 />, level: 5 },
-        { name: "SASS/SCSS", icon: <SiSass />, level: 4 },
-        { name: "Tailwind CSS", icon: <SiTailwindcss />, level: 4 }
+        { name: "React", level: 4 }
       ]
     },
     {
-      category: translations[currentLanguage].categories.backend.name,
-      descriptionFr: translations.fr.categories.backend.description,
-      descriptionEn: translations.en.categories.backend.description,
+      category: translations[currentLanguage].categories.data.name,
+      descriptionFr: "Outils d'analyse et de visualisation de données",
+      descriptionEn: "Data analysis and visualization tools",
       items: [
-        { name: "Node.js", icon: <SiNodedotjs />, level: 5 },
-        { name: "Express.js", icon: <SiExpress />, level: 4 },
-        { name: "Django", icon: <SiDjango />, level: 3 },
-        { name: "Laravel", icon: <SiLaravel />, level: 3 },
-        { name: "Spring Boot", icon: <SiSpring />, level: 3 },
-        { name: "GraphQL", icon: <SiGraphql />, level: 4 }
+        { name: "Power BI", level: 3 }
+      ]
+    },
+    {
+      category: translations[currentLanguage].categories.ide.name,
+      descriptionFr: "Environnements de développement",
+      descriptionEn: "Development environments",
+      items: [
+        { name: "Visual Studio Code", level: 5 }
+      ]
+    },
+    {
+      category: translations[currentLanguage].categories.databases.name,
+      descriptionFr: "Bases de données et stockage",
+      descriptionEn: "Databases and storage",
+      items: [
+        { name: "MySQL", level: 4 }
       ]
     },
     {
       category: translations[currentLanguage].categories.tools.name,
-      descriptionFr: translations.fr.categories.tools.description,
-      descriptionEn: translations.en.categories.tools.description,
+      descriptionFr: "Outils de développement",
+      descriptionEn: "Development tools",
       items: [
-        { name: "Git/GitHub", icon: <IoLogoGithub />, level: 5 },
-        { name: "Docker", icon: <IoLogoDocker />, level: 4 },
-        { name: "AWS", icon: <SiAmazonwebservices />, level: 3 },
-        { name: "NPM/Yarn", icon: <IoLogoNpm />, level: 5 },
-        { name: "Jest/Testing", icon: <SiJest />, level: 4 },
-        { name: "Agile/Jira", icon: <SiJira />, level: 4 }
+        { name: "Git", level: 4 }
+      ]
+    },
+    {
+      category: translations[currentLanguage].categories.methods.name,
+      descriptionFr: "Méthodologies de travail",
+      descriptionEn: "Work methodologies",
+      items: [
+        { name: "Agile/Scrum", level: 3 }
+      ]
+    },
+    {
+      category: translations[currentLanguage].categories.softskills.name,
+      descriptionFr: "Compétences interpersonnelles",
+      descriptionEn: "Interpersonal skills",
+      items: [
+        { name: "Travail en équipe", level: 4 }
       ]
     }
   ];
