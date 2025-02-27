@@ -6,12 +6,12 @@
   --accent-secondary-dark: #b195ff;
   --text-primary-dark: #ffffff;
 
-  /* Thème clair */
-  --bg-primary-light: #f8f9fc;
+  /* Thème clair - Nouvelles couleurs plus visibles */
+  --bg-primary-light: #f0f2f5;
   --bg-secondary-light: #ffffff;
-  --accent-primary-light: #ff4d5a;
-  --accent-secondary-light: #7c5dfa;
-  --text-primary-light: #1a1a2e;
+  --accent-primary-light: #e63946;
+  --accent-secondary-light: #4361ee;
+  --text-primary-light: #2b2d42;
 
   /* Variables actives (initialement thème sombre) */
   --bg-primary: var(--bg-primary-dark);

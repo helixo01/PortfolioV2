@@ -26,7 +26,6 @@ import {
   SiTableau,
   SiGrafana,
   SiJupyter,
-  SiMicrosoftsqlserver,
   SiInfluxdb,
   SiSqlite,
   SiMysql
@@ -154,7 +153,11 @@ const Skills = () => {
       descriptionFr: "Outils d'analyse et de visualisation de données",
       descriptionEn: "Data analysis and visualization tools",
       items: [
-        { name: "Power BI", level: 3 },
+        { 
+          name: "Power BI", 
+          level: 3, 
+          icon: <img src="/images/logos/Power-BI.png" alt="Power BI" style={{ width: '24px', height: '24px' }} />
+        },
         { name: "Tableau", level: 3, icon: <SiTableau /> },
         { name: "Grafana", level: 3, icon: <SiGrafana /> }
       ]
