@@ -5,6 +5,8 @@
   height: 800px;
   display: flex;
   flex-direction: column;
+  content-visibility: auto;
+  contain-intrinsic-size: 800px;
 }
 
 .carousel-content {
@@ -13,6 +15,7 @@
   overflow: hidden;
   position: relative;
   animation: slideDown 0.5s ease-out;
+  will-change: transform;
 }
 
 .category-info {
@@ -58,6 +61,8 @@
   height: 100px;
   opacity: 0;
   animation: slideUp 0.4s ease-out forwards;
+  backface-visibility: hidden;
+  transform: translateZ(0);
 }
 
 .skill-card:hover {
@@ -277,5 +282,58 @@
   .skill-level {
     font-size: 0.8rem;
     padding: 0.2rem 0.5rem;
+  }
+}
+
+/* Styles pour le squelette de chargement */
+.skill-card-skeleton {
+  background: var(--bg-secondary);
+  border-radius: 12px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.skill-icon-skeleton {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--bg-primary);
+}
+
+.skill-info-skeleton {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.skill-name-skeleton {
+  width: 80px;
+  height: 16px;
+  background: var(--bg-primary);
+  border-radius: 4px;
+}
+
+.skill-level-skeleton {
+  width: 60px;
+  height: 12px;
+  background: var(--bg-primary);
+  border-radius: 4px;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
   }
 } 

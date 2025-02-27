@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import './Skills.css';
 import SkillsCarousel from '../../components/SkillsCarousel/SkillsCarousel';
+import { translations } from './translations';
 import { 
   IoLogoJavascript, 
   IoLogoPython, 
@@ -32,99 +33,36 @@ import {
 } from 'react-icons/si';
 import { useLanguage } from '../../context/LanguageContext';
 
+// Précharger les images
+const preloadImages = () => {
+  const images = [
+    '/images/logos/Power-BI.png',
+    '/images/logos/vstudio.png',
+    '/images/logos/pycharm.png',
+    '/images/logos/sqlserver.png'
+  ];
+  
+  images.forEach(src => {
+    const img = new Image();
+    img.src = src;
+  });
+};
+
 const Skills = () => {
   const { language } = useLanguage();
   
-  // Ajout d'un console.log pour déboguer
-  console.log('Current language in Skills:', language);
+  // Précharger les images au montage du composant
+  React.useEffect(() => {
+    preloadImages();
+  }, []);
   
-  // Déplacer les descriptions dans des objets de traduction
-  const translations = {
-    fr: {
-      title: 'Compétences',
-      categories: {
-        programming: {
-          name: "Langages de Programmation",
-          description: "Les langages de programmation que je maîtrise"
-        },
-        frameworks: {
-          name: "Frameworks & Technologies",
-          description: "Frameworks et technologies que j'utilise"
-        },
-        data: {
-          name: "Outils Data & Analytics",
-          description: "Outils d'analyse et de visualisation de données"
-        },
-        ide: {
-          name: "Environnements & IDE",
-          description: "Environnements de développement intégrés"
-        },
-        databases: {
-          name: "Bases de Données",
-          description: "Systèmes de gestion de bases de données"
-        },
-        tools: {
-          name: "Outils de Développement",
-          description: "Outils pour le développement et le déploiement"
-        },
-        methods: {
-          name: "Méthodologies",
-          description: "Méthodes et pratiques de travail"
-        },
-        softskills: {
-          name: "Soft Skills",
-          description: "Compétences interpersonnelles"
-        }
-      }
-    },
-    en: {
-      title: 'Skills',
-      categories: {
-        programming: {
-          name: "Programming Languages",
-          description: "Programming languages I master"
-        },
-        frameworks: {
-          name: "Frameworks & Technologies",
-          description: "Frameworks and technologies I use"
-        },
-        data: {
-          name: "Data Analysis & Visualization",
-          description: "Data analysis and visualization tools"
-        },
-        ide: {
-          name: "Development Environments & IDE",
-          description: "Development environments"
-        },
-        databases: {
-          name: "Databases",
-          description: "Databases and storage"
-        },
-        tools: {
-          name: "Development Tools",
-          description: "Development tools"
-        },
-        methods: {
-          name: "Work Methodologies",
-          description: "Work methodologies"
-        },
-        softskills: {
-          name: "Soft Skills",
-          description: "Interpersonal skills"
-        }
-      }
-    }
-  };
-
-  // Vérification de sécurité modifiée pour le débogage
   const currentLanguage = language && (language === 'fr' || language === 'en') ? language : 'fr';
-  console.log('Processed language:', currentLanguage);
 
-  const skills = [
+  const skills = useMemo(() => [
     {
       category: translations[currentLanguage].categories.programming.name,
-      descriptionFr: "Les langages de programmation que je maîtrise",
-      descriptionEn: "Programming languages I master",
+      descriptionFr: translations.fr.categories.programming.description,
+      descriptionEn: translations.en.categories.programming.description,
       items: [
         { name: "JavaScript", level: 3, icon: <IoLogoJavascript /> },
         { name: "HTML", level: 3, icon: <IoLogoHtml5 /> },
@@ -138,8 +76,8 @@ const Skills = () => {
     },
     {
       category: translations[currentLanguage].categories.frameworks.name,
-      descriptionFr: "Frameworks et technologies que j'utilise",
-      descriptionEn: "Frameworks and technologies I use",
+      descriptionFr: translations.fr.categories.frameworks.description,
+      descriptionEn: translations.en.categories.frameworks.description,
       items: [
         { name: "React", level: 2, icon: <SiReact /> },
         { name: "Angular", level: 1, icon: <SiAngular /> },
@@ -149,8 +87,8 @@ const Skills = () => {
     },
     {
       category: translations[currentLanguage].categories.data.name,
-      descriptionFr: "Outils d'analyse et de visualisation de données",
-      descriptionEn: "Data analysis and visualization tools",
+      descriptionFr: translations.fr.categories.data.description,
+      descriptionEn: translations.en.categories.data.description,
       items: [
         { 
           name: "Power BI", 
@@ -163,8 +101,8 @@ const Skills = () => {
     },
     {
       category: translations[currentLanguage].categories.ide.name,
-      descriptionFr: "Environnements de développement",
-      descriptionEn: "Development environments",
+      descriptionFr: translations.fr.categories.ide.description,
+      descriptionEn: translations.en.categories.ide.description,
       items: [
         { 
           name: "Visual Studio Code", 
@@ -181,8 +119,8 @@ const Skills = () => {
     },
     {
       category: translations[currentLanguage].categories.databases.name,
-      descriptionFr: "Bases de données et stockage",
-      descriptionEn: "Databases and storage",
+      descriptionFr: translations.fr.categories.databases.description,
+      descriptionEn: translations.en.categories.databases.description,
       items: [
         { name: "MySQL", level: 3, icon: <SiMysql /> },
         { 
@@ -196,24 +134,24 @@ const Skills = () => {
     },
     {
       category: translations[currentLanguage].categories.tools.name,
-      descriptionFr: "Outils de développement",
-      descriptionEn: "Development tools",
+      descriptionFr: translations.fr.categories.tools.description,
+      descriptionEn: translations.en.categories.tools.description,
       items: [
         { name: "GitHub", level: 2, icon: <IoLogoGithub /> }
       ]
     },
     {
       category: translations[currentLanguage].categories.methods.name,
-      descriptionFr: "Méthodologies de travail",
-      descriptionEn: "Work methodologies",
+      descriptionFr: translations.fr.categories.methods.description,
+      descriptionEn: translations.en.categories.methods.description,
       items: [
         { name: "PDCA", level: 3, icon: <IoSync /> }
       ]
     },
     {
       category: translations[currentLanguage].categories.softskills.name,
-      descriptionFr: "Compétences interpersonnelles",
-      descriptionEn: "Interpersonal skills",
+      descriptionFr: translations.fr.categories.softskills.description,
+      descriptionEn: translations.en.categories.softskills.description,
       items: [
         { name: "Travail en équipe", level: 3, icon: <IoPeople /> },
         { name: "Organisation", level: 4, icon: <IoCalendar /> },
@@ -222,7 +160,7 @@ const Skills = () => {
         { name: "Curiosité", level: 3, icon: <IoSearch /> }
       ]
     }
-  ];
+  ], [currentLanguage]);
 
   return (
     <section id="skills" className="skills-section">
@@ -234,4 +172,4 @@ const Skills = () => {
   );
 };
 
-export default Skills; 
+export default React.memo(Skills); 

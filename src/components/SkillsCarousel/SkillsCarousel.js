@@ -1,13 +1,94 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback, useMemo, useRef, useEffect, Suspense, lazy } from 'react';
 import { IoArrowForward, IoArrowBack } from 'react-icons/io5';
 import './SkillsCarousel.css';
+
+// Chargement dynamique des composants avec prefetch
+const SkillCard = lazy(() => 
+  import(/* webpackChunkName: "skill-card" */ './SkillCard')
+);
+
+const CategoryInfo = lazy(() => 
+  import(/* webpackChunkName: "category-info" */ './CategoryInfo')
+);
+
+const CarouselNavigation = lazy(() => 
+  import(/* webpackChunkName: "carousel-nav" */ './CarouselNavigation')
+);
+
+// Composant de chargement optimisé
+const LoadingFallback = React.memo(() => (
+  <div className="skill-card-skeleton">
+    <div className="skill-icon-skeleton"></div>
+    <div className="skill-info-skeleton">
+      <div className="skill-name-skeleton"></div>
+      <div className="skill-level-skeleton"></div>
+    </div>
+  </div>
+));
 
 const SkillsCarousel = ({ skills, language }) => {
   const [currentCategory, setCurrentCategory] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const timeoutRef = useRef(null);
+  const observerRef = useRef(null);
+  const carouselRef = useRef(null);
+  const stateRef = useRef({ currentCategory, isAnimating });
 
-  const handleSlide = (direction) => {
-    if (isAnimating) return;
+  // Mettre à jour la référence de l'état
+  useEffect(() => {
+    stateRef.current = { currentCategory, isAnimating };
+  }, [currentCategory, isAnimating]);
+
+  useEffect(() => {
+    // Gestionnaire pour le bfcache
+    const handlePageShow = (event) => {
+      if (event.persisted) {
+        // Restaurer l'état si la page vient du bfcache
+        setCurrentCategory(stateRef.current.currentCategory);
+        setIsAnimating(false);
+      }
+    };
+
+    const handlePageHide = () => {
+      // Nettoyer les ressources avant la mise en cache
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+      if (observerRef.current) {
+        observerRef.current.disconnect();
+      }
+    };
+
+    // Observer pour le chargement lazy
+    observerRef.current = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setIsLoaded(true);
+          observerRef.current?.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (carouselRef.current) {
+      observerRef.current.observe(carouselRef.current);
+    }
+
+    // Ajouter les écouteurs d'événements
+    window.addEventListener('pageshow', handlePageShow);
+    window.addEventListener('pagehide', handlePageHide);
+    
+    // Nettoyage
+    return () => {
+      handlePageHide();
+      window.removeEventListener('pageshow', handlePageShow);
+      window.removeEventListener('pagehide', handlePageHide);
+    };
+  }, []);
+
+  const handleSlide = useCallback((direction) => {
+    if (stateRef.current.isAnimating) return;
     
     setIsAnimating(true);
     
@@ -21,13 +102,12 @@ const SkillsCarousel = ({ skills, language }) => {
       );
     }
 
-    // Ajuster le délai pour correspondre à l'animation la plus longue
-    setTimeout(() => {
+    timeoutRef.current = setTimeout(() => {
       setIsAnimating(false);
-    }, 700); // Augmenté pour prendre en compte tous les délais + durée de l'animation
-  };
+    }, 700);
+  }, [skills.length]);
 
-  const getSkillLevel = (level) => {
+  const getSkillLevel = useCallback((level) => {
     if (language === 'fr') {
       switch(level) {
         case 1: return "Débutant";
@@ -45,66 +125,64 @@ const SkillsCarousel = ({ skills, language }) => {
         default: return "Beginner";
       }
     }
-  };
+  }, [language]);
+
+  const currentCategoryData = useMemo(() => ({
+    category: skills[currentCategory].category,
+    description: language === 'fr' ? 
+      skills[currentCategory].descriptionFr : 
+      skills[currentCategory].descriptionEn,
+    items: skills[currentCategory].items
+  }), [currentCategory, language, skills]);
+
+  // Préchargement des composants
+  useEffect(() => {
+    const preloadComponents = async () => {
+      const imports = [
+        import(/* webpackChunkName: "skill-card" */ './SkillCard'),
+        import(/* webpackChunkName: "category-info" */ './CategoryInfo'),
+        import(/* webpackChunkName: "carousel-nav" */ './CarouselNavigation')
+      ];
+      await Promise.all(imports);
+    };
+
+    preloadComponents();
+  }, []);
 
   return (
-    <div className="skills-carousel">
+    <div className="skills-carousel" ref={carouselRef}>
       <div className="carousel-content">
-        <div className="category-info" key={`category-${currentCategory}`}>
-          <h3>{skills[currentCategory].category}</h3>
-          <p className="category-description">
-            {language === 'fr' ? 
-              skills[currentCategory].descriptionFr : 
-              skills[currentCategory].descriptionEn
-            }
-          </p>
-        </div>
-        
-        <div className="skills-grid" key={`grid-${currentCategory}`}>
-          {skills[currentCategory].items.map((skill) => (
-            <div key={skill.name} className="skill-card">
-              <div className="skill-icon">{skill.icon}</div>
-              <div className="skill-info">
-                <span className="skill-name">{skill.name}</span>
-                <span className={`skill-level level-${skill.level}`}>
-                  {getSkillLevel(skill.level)}
-                </span>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <div className="carousel-navigation">
-        <div className="projects-navigation">
-          <button 
-            className="nav-button prev" 
-            onClick={() => handleSlide('prev')}
-            aria-label="Previous category"
-          >
-            <IoArrowBack />
-          </button>
-          <div className="carousel-indicators">
-            {skills.map((_, index) => (
-              <button
-                key={index}
-                className={`carousel-indicator ${index === currentCategory ? 'active' : ''}`}
-                onClick={() => setCurrentCategory(index)}
-                aria-label={`Go to category ${index + 1}`}
+        <Suspense fallback={<LoadingFallback />}>
+          {isLoaded && (
+            <>
+              <CategoryInfo 
+                category={currentCategoryData.category}
+                description={currentCategoryData.description}
               />
-            ))}
-          </div>
-          <button 
-            className="nav-button next" 
-            onClick={() => handleSlide('next')}
-            aria-label="Next category"
-          >
-            <IoArrowForward />
-          </button>
-        </div>
+              
+              <div className="skills-grid">
+                {currentCategoryData.items.map((skill) => (
+                  <SkillCard 
+                    key={skill.name} 
+                    skill={skill} 
+                    getSkillLevel={getSkillLevel}
+                  />
+                ))}
+              </div>
+
+              <CarouselNavigation 
+                currentCategory={currentCategory}
+                skillsLength={skills.length}
+                handleSlide={handleSlide}
+                setCurrentCategory={setCurrentCategory}
+              />
+            </>
+          )}
+        </Suspense>
       </div>
     </div>
   );
 };
 
-export default SkillsCarousel; 
+// Mémoisation du composant principal
+export default React.memo(SkillsCarousel); 

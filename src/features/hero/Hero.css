@@ -39,6 +39,8 @@
   left: 0;
   width: 100%;
   text-align: center;
+  will-change: transform;
+  contain: layout style paint;
 }
 
 .top-text {
@@ -50,6 +52,9 @@
   text-transform: uppercase;
   text-shadow: 0 0 5px rgba(255, 77, 90, 0.3);
   opacity: 0.95;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  contain: content;
 }
 
 .initials {
