@@ -31,19 +31,17 @@ const SkillsCarousel = ({ skills, language }) => {
     if (language === 'fr') {
       switch(level) {
         case 1: return "Débutant";
-        case 2: return "Élémentaire";
-        case 3: return "Intermédiaire";
-        case 4: return "Avancé";
-        case 5: return "Expert";
+        case 2: return "Intermédiaire";
+        case 3: return "Avancé";
+        case 4: return "Expert";
         default: return "Débutant";
       }
     } else {
       switch(level) {
         case 1: return "Beginner";
-        case 2: return "Elementary";
-        case 3: return "Intermediate";
-        case 4: return "Advanced";
-        case 5: return "Expert";
+        case 2: return "Intermediate";
+        case 3: return "Advanced";
+        case 4: return "Expert";
         default: return "Beginner";
       }
     }

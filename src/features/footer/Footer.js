@@ -107,8 +107,8 @@ const Footer = () => {
             <div className="footer-section">
               <h3>{content.contact}</h3>
               <div className="contact-info">
-                <a href="mailto:contact@example.com" className="footer-link">
-                  <IoMail /> contact@example.com
+                <a href="mailto:sebastien.ricart@viacesi.fr" className="footer-link">
+                  <IoMail /> sebastien.ricart@viacesi.fr
                 </a>
               </div>
             </div>
@@ -117,7 +117,7 @@ const Footer = () => {
               <h3>{content.socials}</h3>
               <div className="social-links">
                 <a 
-                  href="https://github.com" 
+                  href="https://github.com/helixo01" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="footer-link"
@@ -125,7 +125,7 @@ const Footer = () => {
                   <IoLogoGithub /> GitHub
                 </a>
                 <a 
-                  href="https://linkedin.com" 
+                  href="https://www.linkedin.com/in/sébastien-ricart-02b79b250/" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="footer-link"
@@ -133,10 +133,11 @@ const Footer = () => {
                   <IoLogoLinkedin /> LinkedIn
                 </a>
                 <a 
-                  href="/cv.pdf" 
+                  href="/documents/CV_Sebastien_RICART.pdf" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="footer-link"
+                  download
                 >
                   <IoDocumentText /> {content.cv}
                 </a>

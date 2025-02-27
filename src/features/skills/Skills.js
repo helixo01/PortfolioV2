@@ -126,14 +126,14 @@ const Skills = () => {
       descriptionFr: "Les langages de programmation que je maîtrise",
       descriptionEn: "Programming languages I master",
       items: [
-        { name: "JavaScript", level: 4, icon: <IoLogoJavascript /> },
-        { name: "HTML", level: 4, icon: <IoLogoHtml5 /> },
-        { name: "CSS", level: 4, icon: <IoLogoCss3 /> },
-        { name: "Python", level: 3, icon: <IoLogoPython /> },
-        { name: "C", level: 3, icon: <SiC /> },
-        { name: "C++", level: 3, icon: <SiCplusplus /> },
-        { name: "C#", level: 3, icon: <SiDotnet /> },
-        { name: "PHP", level: 3, icon: <SiPhp /> }
+        { name: "JavaScript", level: 3, icon: <IoLogoJavascript /> },
+        { name: "HTML", level: 3, icon: <IoLogoHtml5 /> },
+        { name: "CSS", level: 3, icon: <IoLogoCss3 /> },
+        { name: "Python", level: 2, icon: <IoLogoPython /> },
+        { name: "C", level: 2, icon: <SiC /> },
+        { name: "C++", level: 2, icon: <SiCplusplus /> },
+        { name: "C#", level: 2, icon: <SiDotnet /> },
+        { name: "PHP", level: 2, icon: <SiPhp /> }
       ]
     },
     {
@@ -141,10 +141,10 @@ const Skills = () => {
       descriptionFr: "Frameworks et technologies que j'utilise",
       descriptionEn: "Frameworks and technologies I use",
       items: [
-        { name: "React", level: 4, icon: <SiReact /> },
-        { name: "Angular", level: 3, icon: <SiAngular /> },
-        { name: "Node.js", level: 3, icon: <IoLogoNodejs /> },
-        { name: "Node-RED", level: 3, icon: <SiNodered /> }
+        { name: "React", level: 2, icon: <SiReact /> },
+        { name: "Angular", level: 1, icon: <SiAngular /> },
+        { name: "Node.js", level: 1, icon: <IoLogoNodejs /> },
+        { name: "Node-RED", level: 2, icon: <SiNodered /> }
       ]
     },
     {
@@ -157,8 +157,8 @@ const Skills = () => {
           level: 3, 
           icon: <img src="/images/logos/Power-BI.png" alt="Power BI" style={{ width: '24px', height: '24px' }} />
         },
-        { name: "Tableau", level: 3, icon: <SiTableau /> },
-        { name: "Grafana", level: 3, icon: <SiGrafana /> }
+        { name: "Tableau", level: 1, icon: <SiTableau /> },
+        { name: "Grafana", level: 1, icon: <SiGrafana /> }
       ]
     },
     {
@@ -168,15 +168,15 @@ const Skills = () => {
       items: [
         { 
           name: "Visual Studio Code", 
-          level: 5,
+          level: 4,
           icon: <img src="/images/logos/vstudio.png" alt="Visual Studio Code" style={{ width: '24px', height: '24px' }} />
         },
         { 
           name: "PyCharm", 
-          level: 4,
+          level: 1,
           icon: <img src="/images/logos/pycharm.png" alt="PyCharm" style={{ width: '24px', height: '24px' }} />
         },
-        { name: "Jupyter Notebook", level: 4, icon: <SiJupyter /> }
+        { name: "Jupyter Notebook", level: 2, icon: <SiJupyter /> }
       ]
     },
     {
@@ -184,14 +184,14 @@ const Skills = () => {
       descriptionFr: "Bases de données et stockage",
       descriptionEn: "Databases and storage",
       items: [
-        { name: "MySQL", level: 4, icon: <SiMysql /> },
+        { name: "MySQL", level: 3, icon: <SiMysql /> },
         { 
           name: "SQL Server", 
-          level: 4,
+          level: 3,
           icon: <img src="/images/logos/sqlserver.png" alt="SQL Server" style={{ width: '24px', height: '24px' }} />
         },
-        { name: "InfluxDB", level: 3, icon: <SiInfluxdb /> },
-        { name: "SQLite", level: 3, icon: <SiSqlite /> }
+        { name: "InfluxDB", level: 2, icon: <SiInfluxdb /> },
+        { name: "SQLite", level: 2, icon: <SiSqlite /> }
       ]
     },
     {
@@ -199,7 +199,7 @@ const Skills = () => {
       descriptionFr: "Outils de développement",
       descriptionEn: "Development tools",
       items: [
-        { name: "GitHub", level: 4, icon: <IoLogoGithub /> }
+        { name: "GitHub", level: 2, icon: <IoLogoGithub /> }
       ]
     },
     {
@@ -215,11 +215,11 @@ const Skills = () => {
       descriptionFr: "Compétences interpersonnelles",
       descriptionEn: "Interpersonal skills",
       items: [
-        { name: "Travail en équipe", level: 4, icon: <IoPeople /> },
+        { name: "Travail en équipe", level: 3, icon: <IoPeople /> },
         { name: "Organisation", level: 4, icon: <IoCalendar /> },
         { name: "Autonomie", level: 4, icon: <IoCompass /> },
-        { name: "Résolution de problème", level: 4, icon: <IoBulb /> },
-        { name: "Curiosité", level: 4, icon: <IoSearch /> }
+        { name: "Résolution de problème", level: 3, icon: <IoBulb /> },
+        { name: "Curiosité", level: 3, icon: <IoSearch /> }
       ]
     }
   ];
