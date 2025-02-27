@@ -133,8 +133,7 @@ const Skills = () => {
         { name: "C", level: 3, icon: <SiC /> },
         { name: "C++", level: 3, icon: <SiCplusplus /> },
         { name: "C#", level: 3, icon: <SiDotnet /> },
-        { name: "PHP", level: 3, icon: <SiPhp /> },
-        { name: "VBA", level: 2 }
+        { name: "PHP", level: 3, icon: <SiPhp /> }
       ]
     },
     {
@@ -167,8 +166,16 @@ const Skills = () => {
       descriptionFr: "Environnements de développement",
       descriptionEn: "Development environments",
       items: [
-        { name: "Visual Studio Code", level: 5 },
-        { name: "PyCharm", level: 4 },
+        { 
+          name: "Visual Studio Code", 
+          level: 5,
+          icon: <img src="/images/logos/vstudio.png" alt="Visual Studio Code" style={{ width: '24px', height: '24px' }} />
+        },
+        { 
+          name: "PyCharm", 
+          level: 4,
+          icon: <img src="/images/logos/pycharm.png" alt="PyCharm" style={{ width: '24px', height: '24px' }} />
+        },
         { name: "Jupyter Notebook", level: 4, icon: <SiJupyter /> }
       ]
     },
@@ -178,7 +185,11 @@ const Skills = () => {
       descriptionEn: "Databases and storage",
       items: [
         { name: "MySQL", level: 4, icon: <SiMysql /> },
-        { name: "SQL Server", level: 4 },
+        { 
+          name: "SQL Server", 
+          level: 4,
+          icon: <img src="/images/logos/sqlserver.png" alt="SQL Server" style={{ width: '24px', height: '24px' }} />
+        },
         { name: "InfluxDB", level: 3, icon: <SiInfluxdb /> },
         { name: "SQLite", level: 3, icon: <SiSqlite /> }
       ]
