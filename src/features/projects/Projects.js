@@ -17,7 +17,7 @@ const Projects = ({ language }) => {
       longDescription: language === 'fr'
         ? "Portfolio personnel développé avec React, mettant en avant mes compétences et projets."
         : "Personal portfolio developed with React, showcasing my skills and projects.",
-      image: "/images/Portfolio.png",
+      image: "/images/Portfolio.webp",
       tags: ["React", "JavaScript", "CSS", "Responsive Design"],
       status: "completed",
       links: {
@@ -33,7 +33,7 @@ const Projects = ({ language }) => {
       longDescription: language === 'fr'
         ? "Application d'analyse de données pour League of Legends utilisant l'API Riot Games."
         : "Data analysis application for League of Legends using the Riot Games API.",
-      image: "/images/LoLData.png",
+      image: "/images/LoLData.webp",
       tags: ["React", "API REST", "Data Visualization", "Node.js"],
       status: "in-progress",
       links: {
@@ -49,7 +49,7 @@ const Projects = ({ language }) => {
       longDescription: language === 'fr'
         ? "Bot Discord développé avec Discord.js intégrant diverses fonctionnalités de modération et de divertissement."
         : "Discord bot developed with Discord.js integrating various moderation and entertainment features.",
-      image: "/images/DiscordBot.png",
+      image: "/images/DiscordBot.webp",
       tags: ["Node.js", "Discord.js", "MongoDB", "JavaScript"],
       status: "completed",
       links: {
@@ -65,7 +65,7 @@ const Projects = ({ language }) => {
       longDescription: language === 'fr'
         ? "Site e-commerce complet avec système de paiement."
         : "Complete e-commerce website with payment system.",
-      image: "./images/test.png",
+      image: "./images/test.webp",
       tags: ["Next.js", "Stripe", "PostgreSQL", "Docker"],
       status: "in-progress",
       links: {
@@ -81,7 +81,7 @@ const Projects = ({ language }) => {
       longDescription: language === 'fr'
         ? "Plateforme IoT pour la gestion et le monitoring d'appareils connectés."
         : "IoT platform for connected device management and monitoring.",
-      image: "./images/test.png",
+      image: "./images/test.webp",
       tags: ["Python", "MQTT", "InfluxDB", "Grafana"],
       status: "completed",
       links: {
@@ -97,7 +97,7 @@ const Projects = ({ language }) => {
       longDescription: language === 'fr'
         ? "Système de reconnaissance d'images basé sur le deep learning."
         : "Deep learning-based image recognition system.",
-      image: "./images/test.png",
+      image: "./images/test.webp",
       tags: ["TensorFlow", "Python", "OpenCV", "Docker"],
       status: "in-progress",
       links: {
@@ -253,7 +253,7 @@ const Projects = ({ language }) => {
                               loading="lazy"
                               onLoad={() => handleImageLoad(index)}
                               onError={(e) => {
-                                e.target.src = './images/fallback.png';
+                                e.target.src = './images/fallback.webp';
                                 e.target.alt = language === 'fr' ? 'Image non disponible' : 'Image not available';
                                 handleImageLoad(index);
                               }}

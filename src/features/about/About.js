@@ -73,7 +73,7 @@ const About = ({ language }) => {
         <div className="about-content">
           <div className="about-text-and-photo">
             <div className="photo-container">
-              <img src="./images/Photo.png" alt="Profile" />
+              <img src="./images/Photo.webp" alt="Profile" />
             </div>
             <div className="text-content">
               {highlightText(

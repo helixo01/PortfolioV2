@@ -12,13 +12,13 @@ const Hero = () => {
   const translations = {
     fr: {
       greeting: "Bonjour, je suis",
-      role: "Ingénieur spécialisé en informatique",
+      role: "Apprenti Ingénieur spécialisé en informatique",
       discover: "Découvrir",
       portfolio: "PORTFOLIO"
     },
     en: {
       greeting: "Hello, I am",
-      role: "Software Engineer",
+      role: "Apprentice Software Engineer",
       discover: "Discover",
       portfolio: "PORTFOLIO"
     }

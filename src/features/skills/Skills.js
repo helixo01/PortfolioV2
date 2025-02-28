@@ -36,10 +36,10 @@ import { useLanguage } from '../../context/LanguageContext';
 // Précharger les images
 const preloadImages = () => {
   const images = [
-    '/images/logos/Power-BI.png',
-    '/images/logos/vstudio.png',
-    '/images/logos/pycharm.png',
-    '/images/logos/sqlserver.png'
+    '/images/logos/Power-BI.webp',
+    '/images/logos/vstudio.webp',
+    '/images/logos/pycharm.webp',
+    '/images/logos/sqlserver.webp'
   ];
   
   images.forEach(src => {
@@ -93,7 +93,7 @@ const Skills = () => {
         { 
           name: "Power BI", 
           level: 3, 
-          icon: <img src="/images/logos/Power-BI.png" alt="Power BI" style={{ width: '24px', height: '24px' }} />
+          icon: <img src="/images/logos/Power-BI.webp" alt="Power BI" style={{ width: '24px', height: '24px' }} />
         },
         { name: "Tableau", level: 1, icon: <SiTableau /> },
         { name: "Grafana", level: 1, icon: <SiGrafana /> }
@@ -107,12 +107,12 @@ const Skills = () => {
         { 
           name: "Visual Studio Code", 
           level: 4,
-          icon: <img src="/images/logos/vstudio.png" alt="Visual Studio Code" style={{ width: '24px', height: '24px' }} />
+          icon: <img src="/images/logos/vstudio.webp" alt="Visual Studio Code" style={{ width: '24px', height: '24px' }} />
         },
         { 
           name: "PyCharm", 
           level: 1,
-          icon: <img src="/images/logos/pycharm.png" alt="PyCharm" style={{ width: '24px', height: '24px' }} />
+          icon: <img src="/images/logos/pycharm.webp" alt="PyCharm" style={{ width: '24px', height: '24px' }} />
         },
         { name: "Jupyter Notebook", level: 2, icon: <SiJupyter /> }
       ]
@@ -126,7 +126,7 @@ const Skills = () => {
         { 
           name: "SQL Server", 
           level: 3,
-          icon: <img src="/images/logos/sqlserver.png" alt="SQL Server" style={{ width: '24px', height: '24px' }} />
+          icon: <img src="/images/logos/sqlserver.webp" alt="SQL Server" style={{ width: '24px', height: '24px' }} />
         },
         { name: "InfluxDB", level: 2, icon: <SiInfluxdb /> },
         { name: "SQLite", level: 2, icon: <SiSqlite /> }
