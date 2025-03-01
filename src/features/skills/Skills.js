@@ -29,7 +29,9 @@ import {
   SiJupyter,
   SiInfluxdb,
   SiSqlite,
-  SiMysql
+  SiMysql,
+  SiNotion,
+  SiPostman
 } from 'react-icons/si';
 import { useLanguage } from '../../context/LanguageContext';
 
@@ -137,7 +139,9 @@ const Skills = () => {
       descriptionFr: translations.fr.categories.tools.description,
       descriptionEn: translations.en.categories.tools.description,
       items: [
-        { name: "GitHub", level: 2, icon: <IoLogoGithub /> }
+        { name: "GitHub", level: 2, icon: <IoLogoGithub /> },
+        { name: "Notion", level: 3, icon: <SiNotion /> },
+        { name: "API REST", level: 2, icon: <SiPostman /> }
       ]
     },
     {
