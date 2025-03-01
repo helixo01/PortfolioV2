@@ -26,9 +26,9 @@ export const translations = {
         name: "Outils de Développement",
         description: "Outils pour le développement et le déploiement"
       },
-      methods: {
-        name: "Méthodologies",
-        description: "Méthodes et pratiques de travail"
+      design: {
+        name: "Outils de Design",
+        description: "Outils de conception et de design graphique"
       },
       softskills: {
         name: "Soft Skills",
@@ -63,9 +63,9 @@ export const translations = {
         name: "Development Tools",
         description: "Development tools"
       },
-      methods: {
-        name: "Work Methodologies",
-        description: "Work methodologies"
+      design: {
+        name: "Design Tools",
+        description: "Graphic design and conception tools"
       },
       softskills: {
         name: "Soft Skills",

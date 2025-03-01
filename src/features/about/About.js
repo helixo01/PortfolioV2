@@ -1,8 +1,14 @@
 import React, { useState } from 'react';
 import './About.css';
+import { IoChevronDown, IoChevronUp } from 'react-icons/io5';
 
 const About = ({ language }) => {
   const [filter, setFilter] = useState('all');
+  const [expandedRow, setExpandedRow] = useState(null);
+
+  const toggleRow = (rowIndex) => {
+    setExpandedRow(expandedRow === rowIndex ? null : rowIndex);
+  };
 
   const experiences = [
     {
@@ -66,6 +72,19 @@ const About = ({ language }) => {
     ? experiences 
     : experiences.filter(exp => exp.type === filter);
 
+  // Calculer le nombre d'éléments par ligne
+  const itemsPerRow = window.innerWidth > 1200 ? 3 : window.innerWidth > 768 ? 2 : 1;
+
+  // Organiser les expériences en lignes
+  const rows = filteredExperiences.reduce((acc, exp, index) => {
+    const rowIndex = Math.floor(index / itemsPerRow);
+    if (!acc[rowIndex]) {
+      acc[rowIndex] = [];
+    }
+    acc[rowIndex].push({ ...exp, index });
+    return acc;
+  }, []);
+
   return (
     <section id="about" className="about-section">
       <div className="about-container">
@@ -78,8 +97,8 @@ const About = ({ language }) => {
             <div className="text-content">
               {highlightText(
                 language === 'fr' 
-                  ? "Actuellement en 2e année du cycle ingénieur sous statut alternant, je suis quelqu'un de curieux et de polyvalant pouvant travailler dans de nombreux domaines. Avec des expériences dans le développement Web et logiciel, le réseau et la Data mais la nouveauté ne me fait pas peur et je me ferais une joie de découvrir de nouveau sujets."
-                  : "Currently in my 2nd year of engineering studies as a work-study student, I am a curious and versatile person who can work in many fields. With experience in Web and software development, networking and Data, but I'm not afraid of novelty and I would be happy to discover new subjects."
+                  ? "Actuellement en 2e année du cycle ingénieur en alternance à <a href='https://ecole-ingenieurs.cesi.fr/' target='_blank' rel='noopener noreferrer'><u>CESI</u></a> et employé par <a href='https://www.opmobility.com/en/' target='_blank' rel='noopener noreferrer'><u>OPMobility</u></a>, je suis passionné par le développement et la technologie. Curieux et polyvalent, j'aime explorer différents domaines comme le <strong>développement Web</strong>, le <strong>développement logiciel</strong>, les <strong>réseaux</strong> ou encore la <strong>Data</strong>. Découvrir de nouvelles technologies et relever de nouveaux défis ne me fait pas peur : je suis toujours partant pour apprendre et innover."
+                  : "Currently in my 2nd year of engineering studies as a work-study student at <a href='https://ecole-ingenieurs.cesi.fr/en/' target='_blank' rel='noopener noreferrer'><u>CESI</u></a> and employed by <a href='https://www.opmobility.com/en/' target='_blank' rel='noopener noreferrer'><u>OPMobility</u></a>, I am passionate about development and technology. Curious and versatile, I enjoy exploring different fields such as <strong>Web development</strong>, <strong>software development</strong>, <strong>networking</strong> and <strong>Data</strong>. Discovering new technologies and taking on new challenges doesn't scare me: I'm always eager to learn and innovate."
               )}
             </div>
           </div>
@@ -107,12 +126,36 @@ const About = ({ language }) => {
               </button>
             </div>
             <div className="experience-grid">
-              {filteredExperiences.map((exp, index) => (
-                <div key={index} className="experience-card">
-                  <div className="experience-year">{exp.year}</div>
-                  <h4 className="experience-title">{exp.title}</h4>
-                  <span className="experience-company">{exp.company}</span>
-                  <p className="experience-description">{exp.description}</p>
+              {rows.map((row, rowIndex) => (
+                <div key={rowIndex} className="experience-row">
+                  {row.map((exp, colIndex) => (
+                    <div 
+                      key={colIndex} 
+                      className={`experience-card ${expandedRow === rowIndex ? 'expanded' : ''}`}
+                    >
+                      <div className="experience-year">{exp.year}</div>
+                      <h4 className="experience-title">{exp.title}</h4>
+                      <span className="experience-company">{exp.company}</span>
+                      <div className="experience-description-wrapper">
+                        <p className={`experience-description ${expandedRow === rowIndex ? 'expanded' : ''}`}>
+                          {exp.description}
+                        </p>
+                        <button 
+                          className="show-more-button" 
+                          onClick={() => toggleRow(rowIndex)}
+                        >
+                          {expandedRow === rowIndex ? 
+                            (language === 'fr' ? 'Moins de détails' : 'Less details') : 
+                            (language === 'fr' ? 'Plus de détails' : 'More details')
+                          }
+                          {expandedRow === rowIndex ? 
+                            <IoChevronUp className="show-more-icon" /> : 
+                            <IoChevronDown className="show-more-icon" />
+                          }
+                        </button>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               ))}
             </div>

@@ -14,7 +14,9 @@ import {
   IoCompass,
   IoBulb,
   IoSearch,
-  IoSync
+  IoSync,
+  IoBrush,
+  IoColorPalette
 } from 'react-icons/io5';
 import {
   SiPhp,
@@ -31,7 +33,9 @@ import {
   SiSqlite,
   SiMysql,
   SiNotion,
-  SiPostman
+  SiPostman,
+  SiFigma,
+  SiCanva
 } from 'react-icons/si';
 import { useLanguage } from '../../context/LanguageContext';
 
@@ -141,15 +145,17 @@ const Skills = () => {
       items: [
         { name: "GitHub", level: 2, icon: <IoLogoGithub /> },
         { name: "Notion", level: 3, icon: <SiNotion /> },
-        { name: "API REST", level: 2, icon: <SiPostman /> }
+        { name: "API REST", level: 2, icon: <SiPostman /> },
+        { name: "Postman", level: 2, icon: <SiPostman /> }
       ]
     },
     {
-      category: translations[currentLanguage].categories.methods.name,
-      descriptionFr: translations.fr.categories.methods.description,
-      descriptionEn: translations.en.categories.methods.description,
+      category: translations[currentLanguage].categories.design.name,
+      descriptionFr: translations.fr.categories.design.description,
+      descriptionEn: translations.en.categories.design.description,
       items: [
-        { name: "PDCA", level: 3, icon: <IoSync /> }
+        { name: "Figma", level: 2, icon: <SiFigma /> },
+        { name: "Canva", level: 3, icon: <SiCanva /> }
       ]
     },
     {
@@ -161,7 +167,8 @@ const Skills = () => {
         { name: "Organisation", level: 4, icon: <IoCalendar /> },
         { name: "Autonomie", level: 4, icon: <IoCompass /> },
         { name: "Résolution de problème", level: 3, icon: <IoBulb /> },
-        { name: "Curiosité", level: 3, icon: <IoSearch /> }
+        { name: "Curiosité", level: 3, icon: <IoSearch /> },
+        { name: "Adaptabilité", level: 3, icon: <IoSync /> }
       ]
     }
   ], [currentLanguage]);
