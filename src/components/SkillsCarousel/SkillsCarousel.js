@@ -1,4 +1,5 @@
 import React, { useState, useCallback, useMemo, useRef, useEffect, Suspense, lazy } from 'react';
+// eslint-disable-next-line no-unused-vars
 import { IoArrowForward, IoArrowBack } from 'react-icons/io5';
 import './SkillsCarousel.css';
 

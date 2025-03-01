@@ -14,9 +14,7 @@ import {
   IoCompass,
   IoBulb,
   IoSearch,
-  IoSync,
-  IoBrush,
-  IoColorPalette
+  IoSync
 } from 'react-icons/io5';
 import {
   SiPhp,
