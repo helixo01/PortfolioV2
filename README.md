@@ -1,70 +1,89 @@
-# Getting Started with Create React App
+# Portfolio Personnel - Sébastien RICART
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Présentation
 
-## Available Scripts
+Portfolio personnel développé avec React, présentant mon parcours professionnel, mes compétences et mes projets. Le site est entièrement responsive et propose une expérience utilisateur bilingue (Français/Anglais) ainsi qu'un mode sombre/clair.
 
-In the project directory, you can run:
+## Fonctionnalités
 
-### `npm start`
+- **Design Moderne et Responsive** : Interface utilisateur élégante et adaptative sur tous les appareils
+- **Mode Sombre/Clair** : Thème personnalisable pour une meilleure expérience visuelle
+- **Bilingue** : Support complet Français/Anglais
+- **Sections Interactives** :
+  - À propos : Présentation personnelle et parcours professionnel
+  - Projets : Galerie de projets avec filtres et descriptions détaillées
+  - Compétences : Présentation des compétences techniques avec niveaux de maîtrise
+  - Contact : Informations de contact et liens vers les réseaux sociaux
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Technologies Utilisées
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **Frontend** :
+  - React.js
+  - CSS3 avec animations personnalisées
+  - React Icons
+  - Context API pour la gestion d'état
 
-### `npm test`
+- **Performance** :
+  - Images optimisées (format WebP)
+  - Lazy loading des composants
+  - Animations fluides
+  - Code splitting
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **Accessibilité** :
+  - Support de la navigation au clavier
+  - Attributs ARIA
+  - Contraste optimisé
+  - Structure sémantique
 
-### `npm run build`
+## Installation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Clonez le repository :
+```bash
+git clone https://github.com/votre-username/portfolio.git
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. Installez les dépendances :
+```bash
+cd portfolio
+npm install
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3. Lancez le serveur de développement :
+```bash
+npm start
+```
 
-### `npm run eject`
+4. Pour créer une version de production :
+```bash
+npm run build
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Déploiement
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Le site est déployé sur Netlify avec intégration continue. Chaque push sur la branche main déclenche automatiquement un nouveau déploiement.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Compatibilité
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- Navigateurs modernes (Chrome, Firefox, Safari, Edge)
+- Responsive design pour mobiles, tablettes et desktops
+- Support des écrans haute résolution
 
-## Learn More
+## Sécurité et Confidentialité
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Liens externes sécurisés avec `rel="noopener noreferrer"`
+- Politique de confidentialité et mentions légales incluses
+- Gestion des cookies conforme au RGPD
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Licence
 
-### Code Splitting
+Ce projet est sous licence MIT. Voir le fichier `LICENSE` pour plus de détails.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Contact
 
-### Analyzing the Bundle Size
+- Email : sebastien.ricart@viacesi.fr
+- LinkedIn : [Sébastien RICART](https://www.linkedin.com/in/sébastien-ricart-02b79b250/)
+- GitHub : [helixo01](https://github.com/helixo01)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+---
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Développé par Sébastien RICART
