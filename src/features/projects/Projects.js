@@ -58,19 +58,19 @@ const Projects = ({ language }) => {
       }
     },
     {
-      title: language === 'fr' ? "Projet 04" : "Project 04",
+      title: language === 'fr' ? "Team Creator" : "Team Creator",
       description: language === 'fr' 
-        ? "Site E-commerce" 
-        : "E-commerce Website",
+        ? "Application de Gestion d'Équipes" 
+        : "Team Management Application",
       longDescription: language === 'fr'
-        ? "Site e-commerce complet avec système de paiement."
-        : "Complete e-commerce website with payment system.",
-      image: "./images/test.webp",
-      tags: ["Next.js", "Stripe", "PostgreSQL", "Docker"],
-      status: "in-progress",
+        ? "Application web interactive pour la création et la gestion d'équipes avec système de glisser-déposer et calcul automatique des moyennes."
+        : "Interactive web application for team creation and management with drag-and-drop system and automatic average calculation.",
+      image: "/images/TeamCreator.webp",
+      tags: ["React", "Vite", "CSS Modules", "Context API"],
+      status: "completed",
       links: {
-        github: "https://github.com/username/project4",
-        live: "https://project4.com"
+        github: "https://github.com/helixo01/team-creator",
+        live: null
       }
     },
     {

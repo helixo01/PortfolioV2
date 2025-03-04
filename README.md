@@ -18,22 +18,30 @@ Portfolio personnel développé avec React, présentant mon parcours professionn
 ## Technologies Utilisées
 
 - **Frontend** :
-  - React.js
+  - React.js 19.0.0
   - CSS3 avec animations personnalisées
-  - React Icons
+  - React Icons 5.4.0
   - Context API pour la gestion d'état
+  - React Router DOM 7.1.5
 
 - **Performance** :
   - Images optimisées (format WebP)
   - Lazy loading des composants
   - Animations fluides
   - Code splitting
+  - Web Vitals pour le monitoring des performances
 
 - **Accessibilité** :
   - Support de la navigation au clavier
   - Attributs ARIA
   - Contraste optimisé
-  - Structure sémantique
+  - Structure sémantique HTML5
+  - Compatibilité avec les lecteurs d'écran
+
+## Prérequis
+
+- Node.js (version 14 ou supérieure)
+- npm ou yarn
 
 ## Installation
 
@@ -58,25 +66,36 @@ npm start
 npm run build
 ```
 
-## Déploiement
+## Tests
 
-Le site est déployé sur Netlify avec intégration continue. Chaque push sur la branche main déclenche automatiquement un nouveau déploiement.
+Le projet inclut des tests unitaires avec Jest et Testing Library :
+
+```bash
+npm test
+```
+
+## Aspects Légaux et Conformité
+
+- **RGPD** : Conformité complète avec le Règlement Général sur la Protection des Données
+- **Cookies** : Gestion transparente des cookies avec consentement utilisateur
+- **Mentions Légales** : Informations légales complètes disponibles sur le site
+- **Accessibilité** : Conformité avec les normes WCAG 2.1
+- **Licence** : Projet sous licence MIT (voir fichier LICENSE)
+
+## Sécurité
+
+- Protection contre les attaques XSS
+- En-têtes de sécurité configurés
+- Liens externes sécurisés avec `rel="noopener noreferrer"`
+- Validation des entrées utilisateur
+- Chargement sécurisé des ressources externes
 
 ## Compatibilité
 
-- Navigateurs modernes (Chrome, Firefox, Safari, Edge)
-- Responsive design pour mobiles, tablettes et desktops
-- Support des écrans haute résolution
-
-## Sécurité et Confidentialité
-
-- Liens externes sécurisés avec `rel="noopener noreferrer"`
-- Politique de confidentialité et mentions légales incluses
-- Gestion des cookies conforme au RGPD
-
-## Licence
-
-Ce projet est sous licence MIT. Voir le fichier `LICENSE` pour plus de détails.
+- **Navigateurs** : Chrome 90+, Firefox 90+, Safari 14+, Edge 90+
+- **Systèmes d'exploitation** : Windows, macOS, Linux
+- **Appareils** : Desktop, Tablet, Mobile
+- **Résolutions** : De 320px à 4K
 
 ## Contact
 
@@ -84,6 +103,16 @@ Ce projet est sous licence MIT. Voir le fichier `LICENSE` pour plus de détails.
 - LinkedIn : [Sébastien RICART](https://www.linkedin.com/in/sébastien-ricart-02b79b250/)
 - GitHub : [helixo01](https://github.com/helixo01)
 
+## Contribution
+
+Les contributions sont les bienvenues ! N'hésitez pas à ouvrir une issue ou à proposer une pull request.
+
+## Remerciements
+
+- CESI École d'ingénieurs pour la formation
+- OP Mobility pour l'opportunité professionnelle
+- La communauté React pour les ressources et le support
+
 ---
 
-Développé par Sébastien RICART
+© 2025 Sébastien RICART. Tous droits réservés.
